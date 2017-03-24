@@ -66,9 +66,9 @@ namespace MovingBoxApp
             }
 
             if (count % 2 == 0)
-                picBoxConveyorBelt.Image = Properties.Resources.conveyorbell01;
+                picBoxConveyorBelt.Image = Properties.Resources.conveyorbelt01;
             else
-                picBoxConveyorBelt.Image = Properties.Resources.conveyorbell02;
+                picBoxConveyorBelt.Image = Properties.Resources.conveyorbelt02;
 
             labelTimer.Text = "" + i;
 

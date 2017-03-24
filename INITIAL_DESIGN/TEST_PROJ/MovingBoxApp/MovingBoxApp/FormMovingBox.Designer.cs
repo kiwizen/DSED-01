@@ -134,7 +134,7 @@
             // 
             // picBoxConveyorBelt
             // 
-            this.picBoxConveyorBelt.Image = global::MovingBoxApp.Properties.Resources.conveyorbell01;
+            this.picBoxConveyorBelt.Image = global::MovingBoxApp.Properties.Resources.conveyorbelt01;
             this.picBoxConveyorBelt.Location = new System.Drawing.Point(12, 171);
             this.picBoxConveyorBelt.Name = "picBoxConveyorBelt";
             this.picBoxConveyorBelt.Size = new System.Drawing.Size(717, 110);

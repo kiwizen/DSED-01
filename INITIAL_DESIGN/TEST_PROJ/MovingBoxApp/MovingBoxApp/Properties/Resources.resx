@@ -121,10 +121,10 @@
   <data name="box" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="conveyorbell01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\conveyorbell01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="conveyorbelt01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\conveyorbelt01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="conveyorbell02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\conveyorbell02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="conveyorbelt02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\conveyorbelt02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

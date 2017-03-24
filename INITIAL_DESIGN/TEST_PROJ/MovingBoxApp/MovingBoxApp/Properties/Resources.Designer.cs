@@ -73,9 +73,9 @@ namespace MovingBoxApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap conveyorbell01 {
+        internal static System.Drawing.Bitmap conveyorbelt01 {
             get {
-                object obj = ResourceManager.GetObject("conveyorbell01", resourceCulture);
+                object obj = ResourceManager.GetObject("conveyorbelt01", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace MovingBoxApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap conveyorbell02 {
+        internal static System.Drawing.Bitmap conveyorbelt02 {
             get {
-                object obj = ResourceManager.GetObject("conveyorbell02", resourceCulture);
+                object obj = ResourceManager.GetObject("conveyorbelt02", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
