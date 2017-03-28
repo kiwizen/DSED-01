@@ -14,6 +14,7 @@ namespace OpenBoxApp
     public partial class BoxOpeningForm : Form
     {
         private PanelTimer myPanelTimer;
+        public static event EventHandler _show;
 
         public BoxOpeningForm()
         {
@@ -26,6 +27,11 @@ namespace OpenBoxApp
         private void BoxOpeningForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             myPanelTimer.stop();
+        }
+
+        public void moveBox()
+        {
+
         }
     }
 
@@ -78,7 +84,9 @@ namespace OpenBoxApp
         {
             if (++count % 5 == 0)  // Every 5 seconds, do something
             {
+                MoveBox();
                 myTimer.Stop();
+                //BoxOpeningForm._show += new EventHandler(BoxOpeningForm.M)
 
                 if (++picBoxIndex > 6)
                 {
@@ -120,7 +128,8 @@ namespace OpenBoxApp
                     if (screenControl is PictureBox &&
                         screenControl.Name == "pictureBox" + picBoxIndex)
                         screenControl.Visible = false;
-                //myTimer.Stop();
+                myTimer.Stop();
+ 
 
                 if (++picBoxIndex > 6)
                 {
