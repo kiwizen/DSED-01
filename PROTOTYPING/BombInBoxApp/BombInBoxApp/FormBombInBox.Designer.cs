@@ -77,8 +77,8 @@
             this.labelText.Name = "labelText";
             this.labelText.Size = new System.Drawing.Size(450,300);
             this.labelText.TabIndex = 6;
-            this.labelText.Text = "Text on Screen";
-            this.labelText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelText.Text = Properties.Resources.Story;
+            this.labelText.TextAlign = System.Drawing.ContentAlignment.TopLeft;
 
             // 
             // buttonExit
