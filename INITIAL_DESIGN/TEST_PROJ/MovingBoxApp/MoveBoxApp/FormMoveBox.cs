@@ -16,6 +16,8 @@ namespace MoveBoxApp
         {
             InitializeComponent();
             InitializeMyForm();
+
+            DisplayMovingBox();
         }
 
     }

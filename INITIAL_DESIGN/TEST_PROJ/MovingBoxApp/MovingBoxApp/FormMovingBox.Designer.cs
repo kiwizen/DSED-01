@@ -49,6 +49,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBoxConveyorBelt)).BeginInit();
             this.SuspendLayout();
             // 
+            // timer1
+            // 
+            //this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // labelTimer
             // 
             this.labelTimer.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
