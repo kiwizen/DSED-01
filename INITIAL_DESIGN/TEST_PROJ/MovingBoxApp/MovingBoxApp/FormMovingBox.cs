@@ -81,5 +81,6 @@ namespace MovingBoxApp
             // stop the timer
             timer1.Stop();
         }
+
     }
 }
