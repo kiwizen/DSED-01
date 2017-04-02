@@ -231,7 +231,6 @@
             this.Name = "FormRoulette_v2";
             this.Text = "Russian Roulette version 2";
             this.ResumeLayout(false);
-
         }
 
         #endregion

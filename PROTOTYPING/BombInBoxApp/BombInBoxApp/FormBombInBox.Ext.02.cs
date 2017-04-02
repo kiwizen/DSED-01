@@ -8,7 +8,7 @@ namespace BombInBoxApp
 {
     public partial class PictureBoxWithTimer : System.Windows.Forms.PictureBox
     {
-        public int Count { set; get; } = 0;
+        private int count ;
         private static int initial_picBox_X = 80;
         private static int initial_picBox_Y = 350;
         private System.ComponentModel.Container components;
@@ -35,7 +35,7 @@ namespace BombInBoxApp
 
         private void initializeTimerMoveBox()
         {
-            Count = 0;
+            count = 0;
             // set timer interval to 0.085 second
             timer.Interval = 25;
             // add a event hander for timer class
@@ -44,10 +44,10 @@ namespace BombInBoxApp
         }
         private void Tick(object sender, EventArgs e)
         {
-            if (++Count % 250 == 0)  // when counter reach 250, do something
+            if (++count % 250 == 0)  // when counter reach 250, do something
             {
                 this.timer.Stop();
-                Count = 0;
+                count = 0;
             }
             System.Drawing.Point newPoint = this.Location;
             this.Location = new System.Drawing.Point(newPoint.X + 1, newPoint.Y);

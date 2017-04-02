@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormBombInBox.Ext.03.cs" />
     <Compile Include="FormBombInBox.Ext.02.cs">
       <SubType>Component</SubType>
     </Compile>
