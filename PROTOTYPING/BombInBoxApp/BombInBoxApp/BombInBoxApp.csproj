@@ -45,13 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="FormBombInBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormBombInBox.Designer.cs">
       <DependentUpon>FormBombInBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBombInBox.resx">
