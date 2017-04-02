@@ -12,6 +12,10 @@ namespace BombInBoxApp
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
 
+        private System.Windows.Forms.Label labelGame;
+        private System.Windows.Forms.Label labelWin;
+        private System.Windows.Forms.Label labelLoss;
+
         private System.Windows.Forms.Label labelGameTitle;
         //private System.Windows.Forms.Label labelText;
         private System.Windows.Forms.Button buttonExit;
@@ -22,6 +26,10 @@ namespace BombInBoxApp
 
         private void setupFormBoxInBox()
         {
+            Func<System.Drawing.Size> getLabelStandardSize = () =>
+            {
+                return new System.Drawing.Size(70, 30);
+            };
 
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -47,9 +55,20 @@ namespace BombInBoxApp
             this.label1.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(25, 120);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 27);
+            this.label1.Size = getLabelStandardSize();
             this.label1.TabIndex = 15;
             this.label1.Text = "Game :";
+            // 
+            // labelGame
+            // 
+            this.labelGame = new System.Windows.Forms.Label();
+            this.labelGame.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelGame.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGame.Location = new System.Drawing.Point(100, 120);
+            this.labelGame.Name = "labelGame";
+            this.labelGame.Size = getLabelStandardSize();
+            this.labelGame.TabIndex = 9;
+            this.labelGame.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -57,9 +76,20 @@ namespace BombInBoxApp
             this.label2.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(25, 170);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 27);
+            this.label2.Size = getLabelStandardSize();
             this.label2.TabIndex = 15;
             this.label2.Text = "Win :";
+            // 
+            // labelWin
+            // 
+            this.labelWin = new System.Windows.Forms.Label();
+            this.labelWin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelWin.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWin.Location = new System.Drawing.Point(100, 170);
+            this.labelWin.Name = "labelWin";
+            this.labelWin.Size = getLabelStandardSize();
+            this.labelWin.TabIndex = 14;
+            this.labelWin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -67,9 +97,21 @@ namespace BombInBoxApp
             this.label3.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(25, 220);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 27);
+            this.label3.Size = getLabelStandardSize();
             this.label3.TabIndex = 15;
-            this.label3.Text = "Loss :";   
+            this.label3.Text = "Loss :";
+            // 
+            // labelLoss
+            // 
+            this.labelLoss = new System.Windows.Forms.Label();
+            this.labelLoss.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelLoss.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLoss.Location = new System.Drawing.Point(100, 220);
+            this.labelLoss.Name = "labelLoss";
+            this.labelLoss.Size = getLabelStandardSize();
+            this.labelLoss.TabIndex = 12;
+            this.labelLoss.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
             /*
             //
             // Create a label box to display text on the screen
@@ -114,8 +156,11 @@ namespace BombInBoxApp
             */
 
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelGame);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelWin);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelLoss);
 
             this.Controls.Add(this.labelGameTitle);
             //this.Controls.Add(this.labelText);
