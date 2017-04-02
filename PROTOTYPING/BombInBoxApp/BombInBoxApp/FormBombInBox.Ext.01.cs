@@ -11,6 +11,7 @@ namespace BombInBoxApp
         private System.Windows.Forms.Label labelGameTitle;
         private System.Windows.Forms.Label labelText;
         private System.Windows.Forms.Button buttonExit;
+        private PictureBoxWithTimer pictureBox1;
 
         private void setupFormBoxInBox()
         {
@@ -64,13 +65,22 @@ namespace BombInBoxApp
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
 
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1 = new PictureBoxWithTimer();
+            this.pictureBox1.Name = "pictureBox1";
+
             this.Controls.Add(this.labelGameTitle);
             this.Controls.Add(this.labelText);
             this.Controls.Add(this.buttonExit);
+            this.Controls.Add(this.pictureBox1);
 
 
             // Center the form on the screen
             this.CenterToScreen();
+
+            this.pictureBox1.TimerStart();
         }
 
     }
