@@ -51,6 +51,9 @@
     <Compile Include="FormBombInBox.Designer.cs">
       <DependentUpon>FormBombInBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormBombInBox.Extended.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GameClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
