@@ -124,7 +124,6 @@ namespace BombInBoxApp
                 label.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 label.Location = new System.Drawing.Point(x, y);
                 label.Size = new System.Drawing.Size(70, 30);
-                //label.TabIndex = 15;
                 label.Text = labelText;
                 label.TextAlign = textalign;
                 if(FixBorder)
@@ -134,15 +133,15 @@ namespace BombInBoxApp
             // 
             // 
             //
-            initialiseLabelControl(out label1, "Game :", 25, 120);
-            initialiseLabelControl(out label2, "Win :", 25, 170);
+            initialiseLabelControl(out this.label1, "Game :", 25, 120);
+            initialiseLabelControl(out this.label2, "Win :", 25, 170);
             initialiseLabelControl(out label3, "Loss :", 25, 220);
             // 
             // 
             // 
-            initialiseLabelControl(out labelGame, "", 100, 120, System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
-            initialiseLabelControl(out labelWin, "", 100, 170, System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
-            initialiseLabelControl(out labelLoss, "", 100, 220, System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            initialiseLabelControl(out this.labelGame, "", 100, 120, System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            initialiseLabelControl(out this.labelWin, "", 100, 170, System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            initialiseLabelControl(out this.labelLoss, "", 100, 220, System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
 
             controls.Add(this.label1);
             controls.Add(this.labelGame);
