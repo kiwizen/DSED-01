@@ -10,20 +10,21 @@ namespace MoveBoxApp
     {
         private System.Windows.Forms.Timer timerMoveBox;
         private System.Windows.Forms.Label labelGameTitle;
-        private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Label labelMessage;
 
+        private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonPressed;
 
         private System.Windows.Forms.PictureBox pictureBox1;
-
-
 
         private static int initial_picBox_X = 80;
         private static int initial_picBox_Y = 350;
 
         private void InitializeMyForm()
         {
-            // setting the screen size
+            ///
+            /// setting the screen size
+            /// 
             this.SetBounds(0, 0, 850, 570);
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -31,8 +32,9 @@ namespace MoveBoxApp
             this.components = new System.ComponentModel.Container();
             this.timerMoveBox = new System.Windows.Forms.Timer(this.components);
             initializeTimerMoveBox();
-
+            //
             // Display "Bomb in the Box" on a label
+            //
             this.labelGameTitle = new System.Windows.Forms.Label();
             this.labelGameTitle.AutoSize = true;
             this.labelGameTitle.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -46,7 +48,22 @@ namespace MoveBoxApp
             this.labelGameTitle.TabIndex = 6;
             this.labelGameTitle.Text = "Bomb  in  the  Box";
             this.labelGameTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+            //
+            // Display "Message" on a label
+            //
+            this.labelMessage = new System.Windows.Forms.Label();
+            this.labelMessage.AutoSize = false;
+            this.labelMessage.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.labelMessage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelMessage.Font = new System.Drawing.Font("Old English Text MT", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelMessage.Location = new System.Drawing.Point(250, 250);
+            this.labelMessage.Name = "labelMessage";
+            this.labelMessage.Size = new System.Drawing.Size(350, 100);
+            this.labelMessage.TabIndex = 6;
+            this.labelMessage.Text = "Message";
+            this.labelMessage.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             // 
             // pictureBox1
             // 
@@ -58,7 +75,6 @@ namespace MoveBoxApp
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-
             // 
             // buttonExit
             // 
@@ -72,7 +88,6 @@ namespace MoveBoxApp
             this.buttonExit.Text = "Exit App";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
-
             //
             // buttonPressed
             //
@@ -86,12 +101,18 @@ namespace MoveBoxApp
             this.buttonPressed.Text = "Pressed Me!";
             this.buttonPressed.UseVisualStyleBackColor = true;
             this.buttonPressed.Click += new System.EventHandler(this.buttonPressed_Click);
-
+            ///
             /// add all create controls onto the form
+            /// 
             this.Controls.Add(this.labelGameTitle);
+            this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonPressed);
+            ///
+            /// Center the form on the screen
+            /// 
+            this.CenterToScreen();
         }
 
         private void initializeTimerMoveBox()
@@ -112,15 +133,12 @@ namespace MoveBoxApp
 
         private void buttonPressed_Click(object sender, EventArgs e)
         {
-            //this.Close();
-            //
             DisplayMovingBox();
-
         }
-        private int count = 0;
+        private int count = 0, i = 0;
         private void Tick(object sender, EventArgs e)
         {
-            if (++count % 250 == 0)  // Every 5 seconds, do something
+            if (++count % 250 == 0)  // when counter reach 250, do something
             {
                 this.timerMoveBox.Stop();
                 count = 0;
