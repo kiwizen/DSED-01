@@ -14,7 +14,7 @@ namespace BombInBoxApp
 
         private int count ;
         private static int initial_picBox_X = 80;
-        private static int initial_picBox_Y = 350;
+        private static int initial_picBox_Y = 380;
         private System.ComponentModel.Container components;
 
         private System.Windows.Forms.Timer timer;

@@ -111,7 +111,7 @@ namespace BombInBoxApp
             // Center the form on the screen
             this.CenterToScreen();
 
-            //this.pictureBox1.TimerStart();
+            this.pictureBox1.TimerStart();
         }
 
 
