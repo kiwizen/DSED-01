@@ -12,6 +12,8 @@ namespace BombInBoxApp
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
 
         private System.Windows.Forms.Label labelGame;
         private System.Windows.Forms.Label labelWin;
@@ -30,15 +32,18 @@ namespace BombInBoxApp
 
         // Custom Controls
         private PictureBoxWithTimer pictureBox1;
+        private PanelMessage panelMessageBox;
+
         //private LabelWithText labelGameTotal;
 
         private void setupFormBoxInBox()
         {
-
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 
+            //
             // Display "Bomb in the Box" on a label
+            //
             this.labelGameTitle = new System.Windows.Forms.Label();
             this.labelGameTitle.AutoSize = true;
             this.labelGameTitle.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -49,7 +54,7 @@ namespace BombInBoxApp
             this.labelGameTitle.Location = new System.Drawing.Point(200, 25);
             this.labelGameTitle.Name = "labelGameTitle";
             this.labelGameTitle.Size = new System.Drawing.Size(400, 60);
-            this.labelGameTitle.TabIndex = 6;
+            //this.labelGameTitle.TabIndex = 6;
             this.labelGameTitle.Text = "Bomb  in  the  Box";
             this.labelGameTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Controls.Add(this.labelGameTitle);
@@ -64,12 +69,16 @@ namespace BombInBoxApp
             this.pictureBox1.Name = "pictureBox1";
 
             this.pictureBox1.CallBack += this.showButton;
-
+            this.pictureBox1.Visible = false;
             this.Controls.Add(this.pictureBox1);
 
+            //
+            this.panelMessageBox = new PanelMessage();
+            this.Controls.Add(this.panelMessageBox);
 
             //
-            //
+            initialiseLabelControl(out this.label5, "Current :", 25, 70);
+            this.Controls.Add(this.label5);
             // 
             // labelCurrentID
             // 
@@ -78,9 +87,12 @@ namespace BombInBoxApp
             this.labelCurrentID.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCurrentID.Location = new System.Drawing.Point(100, 70);
             this.labelCurrentID.Name = "labelCurrentID";
-            this.labelCurrentID.Size = new System.Drawing.Size(74, 27);
+            this.labelCurrentID.Size = new System.Drawing.Size(70, 30);
             this.labelCurrentID.TabIndex = 9;
             this.labelCurrentID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            initialiseLabelControl(out this.label4, "Secret :", 25, 20);
+            this.Controls.Add(this.label4);
             // 
             // labelBombLocation
             // 
@@ -89,7 +101,7 @@ namespace BombInBoxApp
             this.labelBombLocation.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBombLocation.Location = new System.Drawing.Point(100, 20);
             this.labelBombLocation.Name = "labelBombLocation";
-            this.labelBombLocation.Size = new System.Drawing.Size(74, 27);
+            this.labelBombLocation.Size = new System.Drawing.Size(70, 30);
             this.labelBombLocation.TabIndex = 8;
             this.labelBombLocation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             //
@@ -99,25 +111,24 @@ namespace BombInBoxApp
             // Center the form on the screen
             this.CenterToScreen();
 
-            this.pictureBox1.TimerStart();
+            //this.pictureBox1.TimerStart();
         }
 
-        private void setupGameInfoDisplay(Control.ControlCollection controls)
+
+        private void initialiseLabelControl(out System.Windows.Forms.Label label,
+            string labelText, int x, int y, System.Drawing.ContentAlignment textalign = System.Drawing.ContentAlignment.MiddleLeft, bool FixBorder = false)
         {
-
-            void initialiseLabelControl(out System.Windows.Forms.Label label,
-                string labelText, int x, int y, System.Drawing.ContentAlignment textalign = System.Drawing.ContentAlignment.MiddleLeft, bool FixBorder = false) 
-            {
-                label = new System.Windows.Forms.Label();
-                label.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                label.Location = new System.Drawing.Point(x, y);
-                label.Size = new System.Drawing.Size(70, 30);
-                label.Text = labelText;
-                label.TextAlign = textalign;
-                if(FixBorder)
-                    label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            };
-
+            label = new System.Windows.Forms.Label();
+            label.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label.Location = new System.Drawing.Point(x, y);
+            label.Size = new System.Drawing.Size(70, 30);
+            label.Text = labelText;
+            label.TextAlign = textalign;
+            if (FixBorder)
+                label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        }
+        void setupGameInfoDisplay(Control.ControlCollection controls)
+        {
             // 
             // 
             //
@@ -139,7 +150,7 @@ namespace BombInBoxApp
             //this.labelNoOfRobot.Name = "labelNoOfRobot";
             this.labelNoOfRobot.Size = new System.Drawing.Size(149, 83);
             //this.labelNoOfRobot.TabIndex = 17;
-            this.labelNoOfRobot.Text = "You have ? robot left.";            //
+            this.labelNoOfRobot.Text = "You have ? robots left.";           
             //
             //
             controls.Add(this.label1);
@@ -153,23 +164,22 @@ namespace BombInBoxApp
         }
 
 
+        public static void initialiseButtonControl(out System.Windows.Forms.Button button,
+            string buttonText, int x, int y, int width, int height)
+        {
+            button = new System.Windows.Forms.Button();
+            button.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            button.Location = new System.Drawing.Point(x, y);
+
+            button.Size = new System.Drawing.Size(width, height);
+
+            button.Text = buttonText;
+            button.UseVisualStyleBackColor = true;
+        }
+
         private void setupScreenButton(Control.ControlCollection controls)
         {
-
-            void initialiseButtonControl(out System.Windows.Forms.Button button,
-                string buttonText, int x, int y, int width, int height)
-            {
-                button = new System.Windows.Forms.Button();
-                button.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-                button.Location = new System.Drawing.Point(x, y);
-
-                button.Size = new System.Drawing.Size(width, height);
-
-                button.Text = buttonText;
-                button.UseVisualStyleBackColor = true;
-            }
-
             // 
             // buttonOpen
             // 
@@ -177,7 +187,6 @@ namespace BombInBoxApp
             this.buttonOpen.Enabled = false;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             controls.Add(this.buttonOpen);
-
             // 
             // buttonRobot
             // 
@@ -185,14 +194,12 @@ namespace BombInBoxApp
             this.buttonRobotOpen.Enabled = false;
             this.buttonRobotOpen.Click += new System.EventHandler(this.buttonRobotOpen_Click);
             controls.Add(this.buttonRobotOpen);
-
             // 
             // buttonExit
             // 
             initialiseButtonControl(out this.buttonExit, "Exit App", 600, 450, 100, 55);
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             controls.Add(this.buttonExit);
-
         }
 
 

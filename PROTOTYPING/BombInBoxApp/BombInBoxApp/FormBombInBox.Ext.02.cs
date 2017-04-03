@@ -34,7 +34,10 @@ namespace BombInBoxApp
             initializeTimerMoveBox();
         }
 
-        public void TimerStart() { timer.Start(); }
+        public void TimerStart() {
+            this.Visible = true;
+            timer.Start();
+        }
         public void TimerStop() { timer.Stop(); }
 
         public void Reset()
