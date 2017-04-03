@@ -48,6 +48,8 @@ namespace BombInBoxApp
                 MessageBox.Show("You have just detonated a bomb in the Box!!!\nYou Lose!!!\nPlease try again");
                 myClassRoulette.YouLose();
                 myClassRoulette.NewGame();
+                //pictureBox1.Reset();
+                //pictureBox1.TimerStart();
             }
             else
             {
@@ -59,7 +61,10 @@ namespace BombInBoxApp
                     myClassRoulette.NewGame();
                 }
             }
+            showButton(false);
             refreshScreen();
+            pictureBox1.Reset();
+            pictureBox1.TimerStart();
         }
 
 
@@ -70,7 +75,8 @@ namespace BombInBoxApp
                 MessageBox.Show("You have used a robot to defuse a bomb.\nWell Done.\nYou have won the game!!!");
                 myClassRoulette.YouWon();
                 myClassRoulette.NewGame();
-
+                //pictureBox1.Reset();
+                //pictureBox1.TimerStart();
             }
             else
             {
@@ -80,9 +86,21 @@ namespace BombInBoxApp
                     MessageBox.Show("Sorry You used up all the robot and still could not find the bomb.\nYou lose!!!\nPlease try again");
                     myClassRoulette.YouLose();
                     myClassRoulette.NewGame();
+                    //pictureBox1.Reset();
+                    //pictureBox1.TimerStart();
                 }
             }
+            showButton(false);
             refreshScreen();
+            pictureBox1.Reset();
+            pictureBox1.TimerStart();
+        }
+
+
+        public void showButton(bool flag = true)
+        {
+            buttonOpen.Enabled = flag;
+            buttonRobotOpen.Enabled = flag;
         }
     }
 }

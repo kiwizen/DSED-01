@@ -8,6 +8,10 @@ namespace BombInBoxApp
 {
     public partial class PictureBoxWithTimer : System.Windows.Forms.PictureBox
     {
+        public delegate void ptrMethod(bool flag = true);
+
+        public ptrMethod CallBack = null;
+
         private int count ;
         private static int initial_picBox_X = 80;
         private static int initial_picBox_Y = 350;
@@ -33,6 +37,13 @@ namespace BombInBoxApp
         public void TimerStart() { timer.Start(); }
         public void TimerStop() { timer.Stop(); }
 
+        public void Reset()
+        {
+            this.Image = global::BombInBoxApp.Properties.Resources.box;
+            this.Location = new System.Drawing.Point(initial_picBox_X, initial_picBox_Y);
+            count = 0;
+        }
+
         private void initializeTimerMoveBox()
         {
             count = 0;
@@ -42,11 +53,13 @@ namespace BombInBoxApp
             timer.Tick += new System.EventHandler(Tick);
 
         }
+
         private void Tick(object sender, EventArgs e)
         {
             if (++count % 200 == 0)  // when counter reach 200, do something
             {
-                this.timer.Stop();
+                TimerStop();
+                this.CallBack.Invoke();
                 count = 0;
             }
             System.Drawing.Point newPoint = this.Location;

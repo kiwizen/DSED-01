@@ -62,6 +62,9 @@ namespace BombInBoxApp
             // 
             this.pictureBox1 = new PictureBoxWithTimer();
             this.pictureBox1.Name = "pictureBox1";
+
+            this.pictureBox1.CallBack += this.showButton;
+
             this.Controls.Add(this.pictureBox1);
 
 
@@ -171,6 +174,7 @@ namespace BombInBoxApp
             // buttonOpen
             // 
             initialiseButtonControl(out this.buttonOpen, "You open\nthe box.", 550, 120, 200, 80);
+            this.buttonOpen.Enabled = false;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             controls.Add(this.buttonOpen);
 
@@ -178,6 +182,7 @@ namespace BombInBoxApp
             // buttonRobot
             // 
             initialiseButtonControl(out this.buttonRobotOpen, "Use Robot Arm\nto open the box.", 550, 220, 200, 100);
+            this.buttonRobotOpen.Enabled = false;
             this.buttonRobotOpen.Click += new System.EventHandler(this.buttonRobotOpen_Click);
             controls.Add(this.buttonRobotOpen);
 
@@ -189,6 +194,7 @@ namespace BombInBoxApp
             controls.Add(this.buttonExit);
 
         }
+
 
     }
 }
