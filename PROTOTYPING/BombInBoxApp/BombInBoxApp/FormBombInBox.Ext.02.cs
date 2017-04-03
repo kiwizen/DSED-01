@@ -44,7 +44,7 @@ namespace BombInBoxApp
         }
         private void Tick(object sender, EventArgs e)
         {
-            if (++count % 250 == 0)  // when counter reach 250, do something
+            if (++count % 200 == 0)  // when counter reach 200, do something
             {
                 this.timer.Stop();
                 count = 0;

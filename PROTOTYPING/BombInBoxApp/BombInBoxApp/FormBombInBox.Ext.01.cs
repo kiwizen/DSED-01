@@ -17,6 +17,10 @@ namespace BombInBoxApp
         private System.Windows.Forms.Label labelWin;
         private System.Windows.Forms.Label labelLoss;
 
+        private System.Windows.Forms.Label labelNoOfRobot;
+        private System.Windows.Forms.Label labelCurrentID;
+        private System.Windows.Forms.Label labelBombLocation;
+
         private System.Windows.Forms.Label labelGameTitle;
         //private System.Windows.Forms.Label labelText;
 
@@ -61,6 +65,34 @@ namespace BombInBoxApp
             this.Controls.Add(this.pictureBox1);
 
 
+            //
+            //
+            // 
+            // labelCurrentID
+            // 
+            this.labelCurrentID = new System.Windows.Forms.Label();
+            this.labelCurrentID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCurrentID.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrentID.Location = new System.Drawing.Point(100, 70);
+            this.labelCurrentID.Name = "labelCurrentID";
+            this.labelCurrentID.Size = new System.Drawing.Size(74, 27);
+            this.labelCurrentID.TabIndex = 9;
+            this.labelCurrentID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelBombLocation
+            // 
+            this.labelBombLocation = new System.Windows.Forms.Label();
+            this.labelBombLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelBombLocation.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBombLocation.Location = new System.Drawing.Point(100, 20);
+            this.labelBombLocation.Name = "labelBombLocation";
+            this.labelBombLocation.Size = new System.Drawing.Size(74, 27);
+            this.labelBombLocation.TabIndex = 8;
+            this.labelBombLocation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            //
+            this.Controls.Add(this.labelCurrentID);
+            this.Controls.Add(this.labelBombLocation);
             // Center the form on the screen
             this.CenterToScreen();
 
@@ -95,13 +127,25 @@ namespace BombInBoxApp
             initialiseLabelControl(out this.labelGame, "", 100, 120, System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
             initialiseLabelControl(out this.labelWin, "", 100, 170, System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
             initialiseLabelControl(out this.labelLoss, "", 100, 220, System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
-
+            // 
+            // labelNoOfRobot
+            // 
+            this.labelNoOfRobot = new System.Windows.Forms.Label();
+            this.labelNoOfRobot.Font = new System.Drawing.Font("Papyrus", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNoOfRobot.Location = new System.Drawing.Point(550, 340);
+            //this.labelNoOfRobot.Name = "labelNoOfRobot";
+            this.labelNoOfRobot.Size = new System.Drawing.Size(149, 83);
+            //this.labelNoOfRobot.TabIndex = 17;
+            this.labelNoOfRobot.Text = "You have ? robot left.";            //
+            //
+            //
             controls.Add(this.label1);
             controls.Add(this.labelGame);
             controls.Add(this.label2);
             controls.Add(this.labelWin);
             controls.Add(this.label3);
             controls.Add(this.labelLoss);
+            controls.Add(this.labelNoOfRobot);
 
         }
 
@@ -126,15 +170,15 @@ namespace BombInBoxApp
             // 
             // buttonOpen
             // 
-            initialiseButtonControl(out this.buttonOpen, "You open\nthe box.", 600, 150, 150, 80);
-            //this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            initialiseButtonControl(out this.buttonOpen, "You open\nthe box.", 550, 120, 200, 80);
+            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             controls.Add(this.buttonOpen);
 
             // 
             // buttonRobot
             // 
-            initialiseButtonControl(out this.buttonRobotOpen, "Use Robot Arm\nto open the box.", 600, 250, 200, 100);
-            //this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            initialiseButtonControl(out this.buttonRobotOpen, "Use Robot Arm\nto open the box.", 550, 220, 200, 100);
+            this.buttonRobotOpen.Click += new System.EventHandler(this.buttonRobotOpen_Click);
             controls.Add(this.buttonRobotOpen);
 
             // 
