@@ -19,7 +19,10 @@ namespace BombInBoxApp
 
         private System.Windows.Forms.Label labelGameTitle;
         //private System.Windows.Forms.Label labelText;
+
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Button buttonOpen;
+        private System.Windows.Forms.Button buttonRobotOpen;
 
         // Custom Controls
         private PictureBoxWithTimer pictureBox1;
@@ -27,7 +30,6 @@ namespace BombInBoxApp
 
         private void setupFormBoxInBox()
         {
-
 
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -46,66 +48,17 @@ namespace BombInBoxApp
             this.labelGameTitle.TabIndex = 6;
             this.labelGameTitle.Text = "Bomb  in  the  Box";
             this.labelGameTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+            this.Controls.Add(this.labelGameTitle);
 
             setupGameInfoDisplay(this.Controls);
 
-            /*
-            //
-            // Create a label box to display text on the screen
-            //
-            this.labelText = new System.Windows.Forms.Label();
-            this.labelText.AutoSize = false;
-            this.labelText.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.labelText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelText.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelText.Location = new System.Drawing.Point(175, 100);
-            this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(450, 300);
-            this.labelText.TabIndex = 6;
-            this.labelText.Text = Properties.Resources.Story;
-            this.labelText.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            */
-            // 
-            // buttonExit
-            // 
-            this.buttonExit = new System.Windows.Forms.Button();
-            this.buttonExit.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.buttonExit.Location = new System.Drawing.Point(650, 450);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(100, 55);
-            this.buttonExit.TabIndex = 0;
-            this.buttonExit.Text = "Exit App";
-            this.buttonExit.UseVisualStyleBackColor = true;
-            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
-
+            setupScreenButton(this.Controls);
             // 
             // pictureBox1
             // 
             this.pictureBox1 = new PictureBoxWithTimer();
             this.pictureBox1.Name = "pictureBox1";
-            /*
-            this.labelGameTotal = new LabelWithText("Game Total:");
-            this.labelGameTotal.Name = "labelGameTotal";
-            this.labelGameTotal.Location = new System.Drawing.Point(50, 50);
-            */
-            /*
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.labelGame);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.labelWin);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.labelLoss);
-            */
-
-            this.Controls.Add(this.labelGameTitle);
-            //this.Controls.Add(this.labelText);
-            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.pictureBox1);
-            //this.Controls.Add(this.labelGameTotal);
 
 
             // Center the form on the screen
@@ -151,5 +104,47 @@ namespace BombInBoxApp
             controls.Add(this.labelLoss);
 
         }
+
+
+        private void setupScreenButton(Control.ControlCollection controls)
+        {
+
+            void initialiseButtonControl(out System.Windows.Forms.Button button,
+                string buttonText, int x, int y, int width, int height)
+            {
+                button = new System.Windows.Forms.Button();
+                button.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+                button.Location = new System.Drawing.Point(x, y);
+
+                button.Size = new System.Drawing.Size(width, height);
+
+                button.Text = buttonText;
+                button.UseVisualStyleBackColor = true;
+            }
+
+            // 
+            // buttonOpen
+            // 
+            initialiseButtonControl(out this.buttonOpen, "You open\nthe box.", 600, 150, 150, 80);
+            //this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            controls.Add(this.buttonOpen);
+
+            // 
+            // buttonRobot
+            // 
+            initialiseButtonControl(out this.buttonRobotOpen, "Use Robot Arm\nto open the box.", 600, 250, 200, 100);
+            //this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            controls.Add(this.buttonRobotOpen);
+
+            // 
+            // buttonExit
+            // 
+            initialiseButtonControl(out this.buttonExit, "Exit App", 600, 450, 100, 55);
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            controls.Add(this.buttonExit);
+
+        }
+
     }
 }
