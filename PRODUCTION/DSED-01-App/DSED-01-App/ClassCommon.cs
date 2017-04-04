@@ -22,7 +22,7 @@ namespace DSED_01_App
 
         public static string getRandom(int i)
         {
-            string[] array = { "bird", "cats", "dog", "duck", "giraffe", "guitar", "seahorse" };
+            string[] array = { "bird", "cat", "dog", "duck", "giraffe", "guitar", "seahorse" };
             if (i >= array.Length)
                 return array[array.Length - 1];
             return array[i];

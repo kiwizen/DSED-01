@@ -91,7 +91,7 @@
     <None Include="Resources\bird.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cats.png" />
+    <None Include="Resources\cat.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\dog.png" />
