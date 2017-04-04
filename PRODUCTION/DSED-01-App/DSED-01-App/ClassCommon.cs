@@ -30,8 +30,8 @@ namespace DSED_01_App
 
         public static System.Drawing.Bitmap getRandomImage(int i)
         {
-            object O = global::DSED_01_App.Properties.Resources.ResourceManager.GetObject(getRandom(i));
-            return O as System.Drawing.Bitmap;
+            return  global::DSED_01_App.Properties.Resources.ResourceManager.GetObject(getRandom(i))
+                            as System.Drawing.Bitmap;
         }
     }
 }
