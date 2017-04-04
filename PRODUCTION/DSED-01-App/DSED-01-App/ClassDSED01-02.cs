@@ -10,8 +10,7 @@ namespace DSED_01_App
     public class PictureBoxWithTimer : System.Windows.Forms.Panel
     {
         
-        public delegate void DelegateMethod(bool flag = true);
-
+        public delegate void DelegateMethod();
         public DelegateMethod CallBackMethod = null;
 
         private int _step;
@@ -111,8 +110,9 @@ namespace DSED_01_App
                 TimerStop();
                 if (this.CallBackMethod != null)
                 {
-                    Reset();
+                    //Reset();
                     this.CallBackMethod.Invoke();
+                    return;
                 }
                 _step = 0;
             }

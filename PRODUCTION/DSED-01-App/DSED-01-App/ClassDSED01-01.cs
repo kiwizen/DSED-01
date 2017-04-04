@@ -15,7 +15,7 @@ namespace DSED_01_App
         /// label control that store the title of the game
         /// </summary>
         private System.Windows.Forms.Label labelGameTitle;
-        private MessagePanel panelMessageBox;
+
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -35,6 +35,10 @@ namespace DSED_01_App
         private System.Windows.Forms.Button buttonRobotOpen;
         private System.Windows.Forms.Button buttonExit;
 
+        // User-defined Custom Control Class
+        private PictureBoxWithTimer pictureBox;
+        private MessagePanel messagePanel;
+
         private void InitializeGameScreenLayout()
         {
             // Initialize the basic form FormDSED01
@@ -51,6 +55,10 @@ namespace DSED_01_App
 
             // Initialze the user define custom panel that display game-related message
             InitializeMessagePanel();
+
+            // Initialize a user-defined picture box that moving along the screen with timer control
+            //   also display the box number
+            InitializePictureBoxTimer();
         }
 
 
@@ -147,13 +155,20 @@ namespace DSED_01_App
             this.Controls.Add(this.buttonExit);
         }
 
-
         private void InitializeMessagePanel()
         {
-            this.panelMessageBox = new MessagePanel();
-            this.panelMessageBox.Text = CommonControlClass.
-
-            this.Controls.Add(this.panelMessageBox);
+            this.messagePanel = new MessagePanel();
+            this.messagePanel.CallBackMethod += this.NewGame;
+            this.Controls.Add(this.messagePanel);
         }
+
+        private void InitializePictureBoxTimer()
+        {
+            this.pictureBox = new PictureBoxWithTimer();
+            this.pictureBox.CallBackMethod += this.EnableButton;
+            this.pictureBox.Visible = false;
+            this.Controls.Add(this.pictureBox);
+        }
+
     }
 }

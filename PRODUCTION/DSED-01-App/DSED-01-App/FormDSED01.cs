@@ -14,11 +14,14 @@ namespace DSED_01_App
     {
         // A User defined Class to store all dependent variable related to the Game Form
         //private CommonControlClass _myCommonClass;
+        private BombInBoxGame myGame;
 
         public FormDSED01()
         {
             // Initialize a user defined class object
             //_myCommonClass = new CommonControlClass();
+            myGame = new BombInBoxGame();
+
 
             // Default method call to initialize component
             InitializeComponent();
@@ -26,6 +29,21 @@ namespace DSED_01_App
             // Initialize screen control object
             InitializeGameScreenLayout();
         }
+
+        private void NewGame()
+        {
+            myGame.NewGame();
+            this.messagePanel.Enabled = false;
+            this.pictureBox.TimerStart();
+        }
+
+
+        private void EnableButton()
+        {
+            this.buttonOpen.Enabled = true;
+            this.buttonRobotOpen.Enabled = true;
+        }
+
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();
