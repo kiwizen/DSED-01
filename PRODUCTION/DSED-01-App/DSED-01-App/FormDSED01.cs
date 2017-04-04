@@ -36,7 +36,11 @@ namespace DSED_01_App
             //this.pictureBox1.Visible = true;
             this.Controls.Add(this.pictureBox1);
             this.pictureBox1.TestCall += this.testMovingBox;
-            this.pictureBox1.Image = CommonControlClass.getRandomImage(_myGame.getRandomNumber());
+            //int c = int.Parse(pictureBox1.Tag.ToString());
+            int i = _myGame.getRandomNumber();
+
+            this.pictureBox1.Image = CommonControlClass.getRandomImage(i);
+            this.pictureBox1.Tag = "" + i;
             pictureBox1.TimerStart();
         }
 
@@ -50,8 +54,10 @@ namespace DSED_01_App
                 pictureBox1.TimerStart();
             }
             */
-
-            this.pictureBox1.Image = CommonControlClass.getRandomImage(_myGame.getRandomNumber());
+            int c = int.Parse(pictureBox1.Tag.ToString());
+            int i = _myGame.getRandomNumber(currentNum: c);
+            this.pictureBox1.Image = CommonControlClass.getRandomImage(i);
+            this.pictureBox1.Tag = "" + i;
             pictureBox1.TimerStart();
         }
     }

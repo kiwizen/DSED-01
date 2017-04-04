@@ -20,12 +20,18 @@ namespace DSED_01_App
             return global::DSED_01_App.Properties.Resources.box;
         }
 
+        public static System.Drawing.Bitmap GetBombImage()
+        {
+            return global::DSED_01_App.Properties.Resources.bomb;
+        }
+
         public static string getRandom(int i)
         {
             string[] array = { "bird", "cat", "dog", "duck", "giraffe", "guitar", "seahorse" };
-            if (i >= array.Length)
-                return array[array.Length - 1];
-            return array[i];
+            if (i < array.Length)
+                return array[i];
+            return array[array.Length - 1];
+            
         }
 
         public static System.Drawing.Bitmap getRandomImage(int i)
