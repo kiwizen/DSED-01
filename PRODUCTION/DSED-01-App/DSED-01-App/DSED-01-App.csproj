@@ -46,11 +46,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassCommon.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="ClassDSED01-02.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ClassGame.cs" />
+    <Compile Include="FormDSED01.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormDSED01.Designer.cs">
+      <DependentUpon>FormDSED01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassDSED01-01.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +69,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +83,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bird.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cats.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\duck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\giraffe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guitar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seahorse.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

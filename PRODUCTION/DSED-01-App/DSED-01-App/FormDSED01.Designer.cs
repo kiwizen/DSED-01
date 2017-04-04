@@ -1,6 +1,6 @@
 ﻿namespace DSED_01_App
 {
-    partial class Form1
+    partial class FormDSED01
     {
         /// <summary>
         /// Required designer variable.
