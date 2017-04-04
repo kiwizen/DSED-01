@@ -12,59 +12,23 @@ namespace DSED_01_App
 {
     public partial class FormDSED01 : Form
     {
-        //private CommonControlClass _myCommonClass;
-        private BombInBoxGame _myGame;
-        // Custom Controls
-        private PictureBoxWithTimer pictureBox1;
+        // A User defined Class to store all dependent variable related to the Game Form
+        private CommonControlClass _myCommonClass;
 
         public FormDSED01()
         {
-            //_myCommonClass = new CommonControlClass();
-            _myGame = new BombInBoxGame();
+            // Initialize a user defined class object
+            _myCommonClass = new CommonControlClass();
 
-
+            // Default method call to initialize component
             InitializeComponent();
+
+            // Initialize screen control object
             InitializeGameScreenLayout();
-
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1 = new PictureBoxWithTimer();
-            this.pictureBox1.Name = "pictureBox1";
-
-            //this.pictureBox1.CallBack += this.showButton;
-            //this.pictureBox1.Visible = true;
-            this.Controls.Add(this.pictureBox1);
-            this.pictureBox1.CallBackMethod += this.testMovingBox;
-            /*
-            //int c = int.Parse(pictureBox1.Tag.ToString());
-            int i = _myGame.getRandomNumber();
-
-            this.pictureBox1.Image = CommonControlClass.getRandomImage(i);
-            this.pictureBox1.Tag = i.ToString();
-            */
-
-            pictureBox1.TimerStart();
         }
-
-        private void testMovingBox(bool flag = true)
+        private void buttonExit_Click(object sender, EventArgs e)
         {
-            
-            _myGame.Next();
-            if(_myGame.CurrentBoxID == 7)
-                _myGame.NewGame();
-
-            this.pictureBox1.Text = _myGame.CurrentBoxID.ToString();
-
-            pictureBox1.TimerStart();
-            /*
-            int c = int.Parse(pictureBox1.Tag.ToString());
-            int i = _myGame.getRandomNumber(currentNum: c);
-            this.pictureBox1.Image = CommonControlClass.getRandomImage(i);
-            this.pictureBox1.Tag = i.ToString();
-            pictureBox1.TimerStart();
-            */
-
+            this.Close();
         }
     }
 }

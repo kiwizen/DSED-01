@@ -2,8 +2,13 @@
 
 namespace DSED_01_App
 {
+    /// <summary>
+    /// This file contains a Custom Control Class.
+    /// 
+    /// </summary>  
     public class PictureBoxWithTimer : System.Windows.Forms.Panel
     {
+        
         public delegate void DelegateMethod(bool flag = true);
 
         public DelegateMethod CallBackMethod = null;
@@ -73,7 +78,7 @@ namespace DSED_01_App
         {
             // Initialize the Picture Box control object
             _picBox = new System.Windows.Forms.PictureBox();
-            _picBox.Image = CommonControlClass.GetBoxImage();
+            _picBox.Image = CommonControlClass.BoxImage;
             _picBox.Location = new System.Drawing.Point(0, 0);
             _picBox.Name = "PictureBox";
             _picBox.Size = new System.Drawing.Size(150, 150);
@@ -93,7 +98,7 @@ namespace DSED_01_App
 
         public void Reset()
         {
-            _picBox.Image = CommonControlClass.GetBoxImage();
+            _picBox.Image = CommonControlClass.BoxImage;
             this.Location = new System.Drawing.Point(initial_picBox_X, initial_picBox_Y);
             _step = 0;
         }

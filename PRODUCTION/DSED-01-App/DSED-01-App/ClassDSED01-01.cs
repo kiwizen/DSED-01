@@ -16,11 +16,39 @@ namespace DSED_01_App
         /// </summary>
         private System.Windows.Forms.Label labelGameTitle;
 
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+
+        private System.Windows.Forms.Label labelGame;
+        private System.Windows.Forms.Label labelWin;
+        private System.Windows.Forms.Label labelLoss;
+
+        private System.Windows.Forms.Label labelNoOfRobot;
+        private System.Windows.Forms.Label labelCurrentID;
+        private System.Windows.Forms.Label labelBombLocation;
+  
+        private System.Windows.Forms.Button buttonOpen;
+        private System.Windows.Forms.Button buttonRobotOpen;
+        private System.Windows.Forms.Button buttonExit;
+
         private void InitializeGameScreenLayout()
         {
+            // Initialize the basic form FormDSED01
             InitializeForm();
-            SetGameTitle();
+
+            // Initialize label control that hold the title of the Game
+            InitializeGameTitle();
+
+            // Initialize control object that show game information on the form
+            InitializeGameInfoComponent();
+
+            InitializeButton();
+
         }
+
 
         /// <summary>
         /// This method initializes the form
@@ -41,7 +69,7 @@ namespace DSED_01_App
         /// This method intialize the label control that display the title of the game
         /// Display "Bomb in the Box" on a label control
         /// </summary>
-        private void SetGameTitle()
+        private void InitializeGameTitle()
         {
             this.labelGameTitle = new System.Windows.Forms.Label();
 
@@ -60,7 +88,59 @@ namespace DSED_01_App
 
             this.Controls.Add(this.labelGameTitle);
 
-            this.labelGameTitle.Visible = false;
+            //this.labelGameTitle.Visible = false;
+        }
+
+        void InitializeGameInfoComponent()
+        {
+            this._myCommonClass.initialiseLabelControl(out this.label1, "Game :", 25, 150);
+            this._myCommonClass.initialiseLabelControl(out this.label2, "Win :", 25, 200);
+            this._myCommonClass.initialiseLabelControl(out this.label3, "Loss :", 25, 250);
+
+            this._myCommonClass.initialiseLabelControl(out this.labelGame, "", 100, 150, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            this._myCommonClass.initialiseLabelControl(out this.labelWin, "", 100, 200, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            this._myCommonClass.initialiseLabelControl(out this.labelLoss, "", 100, 250, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+
+            this._myCommonClass.initialiseLabelControl(out this.label4, "Secret :", 25, 20);
+            this._myCommonClass.initialiseLabelControl(out this.label5, "Current :", 25, 70);
+
+            this._myCommonClass.initialiseLabelControl(out this.labelBombLocation, "", 100, 20, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            this._myCommonClass.initialiseLabelControl(out this.labelCurrentID, "", 100, 70, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelGame);
+            this.Controls.Add(this.labelWin);
+            this.Controls.Add(this.labelLoss);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelBombLocation);
+            this.Controls.Add(this.labelCurrentID);
+        }
+
+        private void InitializeButton()
+        {
+            // 
+            // buttonOpen
+            // 
+            this._myCommonClass.initialiseButtonControl(out this.buttonOpen, "You open\nthe box.", 550, 120, 200, 80);
+            this.buttonOpen.Enabled = false;
+            //this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
+            this.Controls.Add(this.buttonOpen);
+            // 
+            // buttonRobot
+            // 
+            this._myCommonClass.initialiseButtonControl(out this.buttonRobotOpen, "Use Robot Arm\nto open the box.", 550, 220, 200, 100);
+            this.buttonRobotOpen.Enabled = false;
+            //this.buttonRobotOpen.Click += new System.EventHandler(this.buttonRobotOpen_Click);
+            this.Controls.Add(this.buttonRobotOpen);
+            // 
+            // buttonExit
+            // 
+            this._myCommonClass.initialiseButtonControl(out this.buttonExit, "Exit App", 600, 450, 100, 55);
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            this.Controls.Add(this.buttonExit);
         }
     }
 }
