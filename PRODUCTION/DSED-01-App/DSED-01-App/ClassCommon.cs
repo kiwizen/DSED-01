@@ -20,6 +20,11 @@ namespace DSED_01_App
             get => global::DSED_01_App.Properties.Resources.bomb;
         }
 
+        public static string TextFile
+        {
+            get => global::DSED_01_App.Properties.Resources.Story;
+        }
+
         public CommonControlClass()
         {
 
@@ -39,7 +44,7 @@ namespace DSED_01_App
         /// <param name="font_size">font size of the label control</param>
         /// <param name="textalign">set alignment of the text on the label control</param>
         /// <param name="FixBorder">set whether the border of the label control is fixed.</param>
-        public void initialiseLabelControl(
+        public static void initialiseLabelControl(
             out System.Windows.Forms.Label label,
             string labelText, int x, int y, int width = 70, int height = 30,
             System.Single font_size = 12F,
@@ -57,7 +62,7 @@ namespace DSED_01_App
                 label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
         }
 
-        public void initialiseButtonControl(
+        public static void initialiseButtonControl(
             out System.Windows.Forms.Button button,
             string buttonText, int x, int y, int width, int height,
             System.Single font_size = 12F)

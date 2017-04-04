@@ -4,7 +4,8 @@ namespace DSED_01_App
 {
     /// <summary>
     /// This file contains a Custom Control Class.
-    /// 
+    /// This custom control display an image, and also display the box number
+    /// It also contain a timer, which control the movement of the custom control on the form
     /// </summary>  
     public class PictureBoxWithTimer : System.Windows.Forms.Panel
     {

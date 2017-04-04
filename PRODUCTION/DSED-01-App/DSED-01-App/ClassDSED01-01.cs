@@ -15,6 +15,7 @@ namespace DSED_01_App
         /// label control that store the title of the game
         /// </summary>
         private System.Windows.Forms.Label labelGameTitle;
+        private MessagePanel panelMessageBox;
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -45,8 +46,11 @@ namespace DSED_01_App
             // Initialize control object that show game information on the form
             InitializeGameInfoComponent();
 
+            // Initialize buttons on the form
             InitializeButton();
 
+            // Initialze the user define custom panel that display game-related message
+            InitializeMessagePanel();
         }
 
 
@@ -93,19 +97,19 @@ namespace DSED_01_App
 
         void InitializeGameInfoComponent()
         {
-            this._myCommonClass.initialiseLabelControl(out this.label1, "Game :", 25, 150);
-            this._myCommonClass.initialiseLabelControl(out this.label2, "Win :", 25, 200);
-            this._myCommonClass.initialiseLabelControl(out this.label3, "Loss :", 25, 250);
+            CommonControlClass.initialiseLabelControl(out this.label1, "Game :", 25, 150);
+            CommonControlClass.initialiseLabelControl(out this.label2, "Win :", 25, 200);
+            CommonControlClass.initialiseLabelControl(out this.label3, "Loss :", 25, 250);
 
-            this._myCommonClass.initialiseLabelControl(out this.labelGame, "", 100, 150, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
-            this._myCommonClass.initialiseLabelControl(out this.labelWin, "", 100, 200, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
-            this._myCommonClass.initialiseLabelControl(out this.labelLoss, "", 100, 250, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            CommonControlClass.initialiseLabelControl(out this.labelGame, "", 100, 150, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            CommonControlClass.initialiseLabelControl(out this.labelWin, "", 100, 200, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            CommonControlClass.initialiseLabelControl(out this.labelLoss, "", 100, 250, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
 
-            this._myCommonClass.initialiseLabelControl(out this.label4, "Secret :", 25, 20);
-            this._myCommonClass.initialiseLabelControl(out this.label5, "Current :", 25, 70);
+            CommonControlClass.initialiseLabelControl(out this.label4, "Secret :", 25, 20);
+            CommonControlClass.initialiseLabelControl(out this.label5, "Current :", 25, 70);
 
-            this._myCommonClass.initialiseLabelControl(out this.labelBombLocation, "", 100, 20, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
-            this._myCommonClass.initialiseLabelControl(out this.labelCurrentID, "", 100, 70, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            CommonControlClass.initialiseLabelControl(out this.labelBombLocation, "", 100, 20, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
+            CommonControlClass.initialiseLabelControl(out this.labelCurrentID, "", 100, 70, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
 
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -124,23 +128,32 @@ namespace DSED_01_App
             // 
             // buttonOpen
             // 
-            this._myCommonClass.initialiseButtonControl(out this.buttonOpen, "You open\nthe box.", 550, 120, 200, 80);
+            CommonControlClass.initialiseButtonControl(out this.buttonOpen, "You open\nthe box.", 550, 120, 200, 80);
             this.buttonOpen.Enabled = false;
             //this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             this.Controls.Add(this.buttonOpen);
             // 
             // buttonRobot
             // 
-            this._myCommonClass.initialiseButtonControl(out this.buttonRobotOpen, "Use Robot Arm\nto open the box.", 550, 220, 200, 100);
+            CommonControlClass.initialiseButtonControl(out this.buttonRobotOpen, "Use Robot Arm\nto open the box.", 550, 220, 200, 100);
             this.buttonRobotOpen.Enabled = false;
             //this.buttonRobotOpen.Click += new System.EventHandler(this.buttonRobotOpen_Click);
             this.Controls.Add(this.buttonRobotOpen);
             // 
             // buttonExit
             // 
-            this._myCommonClass.initialiseButtonControl(out this.buttonExit, "Exit App", 600, 450, 100, 55);
+            CommonControlClass.initialiseButtonControl(out this.buttonExit, "Exit App", 600, 450, 100, 55);
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             this.Controls.Add(this.buttonExit);
+        }
+
+
+        private void InitializeMessagePanel()
+        {
+            this.panelMessageBox = new MessagePanel();
+            this.panelMessageBox.Text = CommonControlClass.
+
+            this.Controls.Add(this.panelMessageBox);
         }
     }
 }

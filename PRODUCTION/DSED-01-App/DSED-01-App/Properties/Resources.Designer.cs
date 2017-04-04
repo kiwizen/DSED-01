@@ -149,5 +149,14 @@ namespace DSED_01_App.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A nortorius person has placed a bomb in the one of the wooden boxes. There are 6 boxs left. Your task is to go through all the boxes and get the stuff out without opening the box containing the bomb. To win the game either 1) You open the first 5 boxes safely and the 6th box will contain the bomb. or 2) using the avaiable 2 robot arm to deactivate the bomb in the box. Good Luck !!!.
+        /// </summary>
+        internal static string Story {
+            get {
+                return ResourceManager.GetString("Story", resourceCulture);
+            }
+        }
     }
 }

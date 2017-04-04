@@ -13,12 +13,12 @@ namespace DSED_01_App
     public partial class FormDSED01 : Form
     {
         // A User defined Class to store all dependent variable related to the Game Form
-        private CommonControlClass _myCommonClass;
+        //private CommonControlClass _myCommonClass;
 
         public FormDSED01()
         {
             // Initialize a user defined class object
-            _myCommonClass = new CommonControlClass();
+            //_myCommonClass = new CommonControlClass();
 
             // Default method call to initialize component
             InitializeComponent();

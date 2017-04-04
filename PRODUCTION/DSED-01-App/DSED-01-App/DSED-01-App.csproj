@@ -49,6 +49,9 @@
     <Compile Include="ClassDSED01-02.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ClassDSED01-03.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ClassGame.cs" />
     <Compile Include="FormDSED01.cs">
       <SubType>Form</SubType>
@@ -110,6 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bomb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Story.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
