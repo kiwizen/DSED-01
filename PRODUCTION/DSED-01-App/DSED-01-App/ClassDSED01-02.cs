@@ -4,11 +4,9 @@ namespace DSED_01_App
 {
     public class PictureBoxWithTimer : System.Windows.Forms.Panel
     {
-        public delegate void ptrMethod(bool flag = true);
-        public delegate void ptrTestMethod();
+        public delegate void DelegateMethod(bool flag = true);
 
-        public ptrMethod CallBack = null;
-        public ptrTestMethod TestCall = null;
+        public DelegateMethod CallBackMethod = null;
 
         private int _step;
         private static int initial_picBox_X = 80;
@@ -54,7 +52,7 @@ namespace DSED_01_App
             _number.Size = new System.Drawing.Size(35, 35);
             _number.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             _number.Text = "1";
-            //this.Controls.Add(_number);
+            this.Controls.Add(_number);
             _number.BringToFront();
         }
 
@@ -73,7 +71,7 @@ namespace DSED_01_App
 
         private void InitializePictureBox()
         {
-            // Initialize the Picture Box control object\
+            // Initialize the Picture Box control object
             _picBox = new System.Windows.Forms.PictureBox();
             _picBox.Image = CommonControlClass.GetBoxImage();
             _picBox.Location = new System.Drawing.Point(0, 0);
@@ -105,12 +103,10 @@ namespace DSED_01_App
             if (++_step % 200 == 0)  // when counter reach 200, do something
             {
                 TimerStop();
-                if (this.CallBack != null)   this.CallBack.Invoke();
-
-                if (this.TestCall != null)
+                if (this.CallBackMethod != null)
                 {
                     Reset();
-                    this.TestCall.Invoke();
+                    this.CallBackMethod.Invoke();
                 }
                 _step = 0;
             }

@@ -96,10 +96,14 @@ namespace DSED_01_App
         /// </summary>
         public int getRandomNumber(int start =1 , int end = 7, int currentNum = 0)
         {
+            /*
             int num = NumGenerator.Next(start, end + 1);
 
             while( num == currentNum)
                 num = NumGenerator.Next(start, end + 1);
+            */
+            int num;
+            while ((num = NumGenerator.Next(start, end + 1)) == currentNum) ;
 
             return num;
         }

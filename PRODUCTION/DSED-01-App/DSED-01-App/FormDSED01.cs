@@ -35,30 +35,37 @@ namespace DSED_01_App
             //this.pictureBox1.CallBack += this.showButton;
             //this.pictureBox1.Visible = true;
             this.Controls.Add(this.pictureBox1);
-            this.pictureBox1.TestCall += this.testMovingBox;
+            this.pictureBox1.CallBackMethod += this.testMovingBox;
+            /*
             //int c = int.Parse(pictureBox1.Tag.ToString());
             int i = _myGame.getRandomNumber();
 
             this.pictureBox1.Image = CommonControlClass.getRandomImage(i);
-            this.pictureBox1.Tag = "" + i;
+            this.pictureBox1.Tag = i.ToString();
+            */
+
             pictureBox1.TimerStart();
         }
 
-        private void testMovingBox()
+        private void testMovingBox(bool flag = true)
         {
-            /*
+            
             _myGame.Next();
-            if(_myGame.CurrentBoxID < 7)
-            {
-                //this.pictureBox1.Text = _myGame.CurrentBoxID.ToString();
-                pictureBox1.TimerStart();
-            }
-            */
+            if(_myGame.CurrentBoxID == 7)
+                _myGame.NewGame();
+
+            this.pictureBox1.Text = _myGame.CurrentBoxID.ToString();
+
+            pictureBox1.TimerStart();
+            /*
             int c = int.Parse(pictureBox1.Tag.ToString());
             int i = _myGame.getRandomNumber(currentNum: c);
             this.pictureBox1.Image = CommonControlClass.getRandomImage(i);
-            this.pictureBox1.Tag = "" + i;
+            this.pictureBox1.Tag = i.ToString();
             pictureBox1.TimerStart();
+            */
+
         }
     }
 }
+

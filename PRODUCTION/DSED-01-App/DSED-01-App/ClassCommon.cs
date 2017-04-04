@@ -9,8 +9,16 @@ namespace DSED_01_App
     class CommonControlClass
     {
         private static int _index = 0;
+        private string[] _randomArray;
         public CommonControlClass()
         {
+            //GenerateRandomArray();
+        }
+
+        private void GenerateRandomArray()
+        {
+            string[] array = { "bird", "cat", "dog", "duck", "giraffe", "guitar", "seahorse" };
+            //_randomArray = array.(x => rnd.Next()).ToArray();
         }
 
         public static int getTabIndex() { return ++_index; }
