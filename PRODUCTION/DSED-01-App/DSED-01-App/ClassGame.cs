@@ -11,7 +11,7 @@ namespace DSED_01_App
         /// <summary>
         /// a Random number generator
         /// </summary>
-        private Random NumGenerator { set; get; } = new Random(DateTime.Now.Millisecond);
+        private Random NumGenerator { set; get; } 
         /// <summary>
         /// The number of Bomb Disposal Robot avialable
         /// </summary>
@@ -23,7 +23,7 @@ namespace DSED_01_App
         /// <summary>
         /// return the current box id
         /// </summary>
-        public int CurrentBoxID { private set; get; } = 1;
+        public int CurrentBoxID { set; get; } = 1;
         /// <summary>
         /// Total number of game that the play has played so far
         /// </summary>
@@ -42,21 +42,33 @@ namespace DSED_01_App
         /// The game Lose counter
         /// </summary>
         public int Lose { private set; get; } = 0;
+
+        private int[] randomArray;
+        public int RandomImageNo { get => this.randomArray[CurrentBoxID-1]; }
         /// <summary>
         /// constructor for the BombInBox class
         /// </summary>
         public BombInBoxGame()
         {
-            NewGame();
+            NumGenerator = new Random(DateTime.Now.Millisecond);
         }
+
+        public void GenerateRandom()
+        {
+            int num = CommonControlClass.ImageList.Length;
+            int [] temp = new int[num];
+            for (int i = 0; i < num; i++)
+                temp[i] = i;
+            this.randomArray = temp.OrderBy(x => NumGenerator.Next()).ToArray();
+        }
+
         /// <summary>
         /// The function is called when starting a new game.
         /// It generate a new secret box ID and reset game variable to initial value;
         /// </summary>
         public void NewGame()
         {
-            // generate the secert Box ID where the bomb will be hided
-            //SecretBoxID = NumGenerator.Next(1, NoOfBox + 1);
+            GenerateRandom();
             SecretBoxID = getRandomNumber(1, NoOfBox, SecretBoxID);
             RobotCount = 2; // Default number of Robot to be 2
             CurrentBoxID = 1; // Always start from Box 1
@@ -66,17 +78,19 @@ namespace DSED_01_App
         ///    Return true if matched, else return false.
         /// </summary>
         /// <returns>return True when the current box ID match the secret box ID</returns>
-        public bool isBomb()
+        public bool isMatch()
         {
             return CurrentBoxID == SecretBoxID;
         }
         /// <summary>
         /// increment to the next box number.
-        /// </summary>
+        /// </summary>      
+        /*
         public void Next()
         {
             CurrentBoxID++;
         }
+        */
         /// <summary>
         /// The player won the game. Increment the game win counter.
         /// </summary>
@@ -94,7 +108,7 @@ namespace DSED_01_App
         /// <summary>
         /// Return a random number between start and end and the number should not be the same as current number
         /// </summary>
-        public int getRandomNumber(int start =1 , int end = 7, int currentNum = 0)
+        private int getRandomNumber(int start =1 , int end = 7, int currentNum = 0)
         {
             /*
             int num = NumGenerator.Next(start, end + 1);
@@ -107,5 +121,7 @@ namespace DSED_01_App
 
             return num;
         }
+
+ 
     }
 }

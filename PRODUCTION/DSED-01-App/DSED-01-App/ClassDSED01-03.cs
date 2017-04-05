@@ -40,9 +40,9 @@ namespace DSED_01_App
 
         public new string Text { set { this._label.Text = value; } }
 
-
         private void OK_Click(object sender, EventArgs e)
         {
+            this._label.Text = CommonControlClass.TextFile;
             if (CallBackMethod != null) CallBackMethod.Invoke();
         }
     }

@@ -25,7 +25,18 @@ namespace DSED_01_App
             get => global::DSED_01_App.Properties.Resources.Story;
         }
 
+        public static string [] ImageList
+        {
+            get => new string [] { "bird", "cat", "dog", "duck", "giraffe", "guitar", "seahorse" };
+        }
+
         public static int getTabIndex() { return ++_index; }
+
+        public static System.Drawing.Bitmap getRandomImage(int i)
+        {
+            return global::DSED_01_App.Properties.Resources.ResourceManager.GetObject(ImageList[i])
+                            as System.Drawing.Bitmap;
+        }
 
         /// <summary>
         /// This method create a unified label control on the form. 

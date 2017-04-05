@@ -69,7 +69,7 @@ namespace DSED_01_App
             // Initialize the Timer control object
             _step = 0;
             // set timer interval to 0.085 second
-            timer.Interval = 25;
+            timer.Interval = 10;
             // add a event hander for timer class
             timer.Tick += new System.EventHandler(Tick);
         }
@@ -131,7 +131,18 @@ namespace DSED_01_App
             set
             {
                 this._picBox.Image = value;
+                this.Refresh();
             }
+        }
+
+        public void BringImageToFront()
+        {
+            this._picBox.BringToFront();
+        }
+
+        public void BringNumberToFront()
+        {
+            this._number.BringToFront();
         }
     }
 }

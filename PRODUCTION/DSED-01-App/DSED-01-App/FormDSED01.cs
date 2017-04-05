@@ -34,10 +34,33 @@ namespace DSED_01_App
         {
             myGame.NewGame();
             refreshScreen();
-
-            this.messagePanel.Enabled = false;
-            this.pictureBox.TimerStart();
+            MoveBox();
+            setCallBackToMoveBox();
         }
+
+        private void setCallBackToNewGame()
+        {
+            showButton(false);
+            this.messagePanel.CallBackMethod = null;
+            this.messagePanel.CallBackMethod += this.NewGame;
+        }
+
+        private void setCallBackToMoveBox()
+        {
+            showButton(false);
+            this.messagePanel.CallBackMethod = null;
+            this.messagePanel.CallBackMethod += this.MoveBox;
+        }
+        public void MoveBox()
+        {
+            this.pictureBox.BringNumberToFront();
+            pictureBox.Text = myGame.CurrentBoxID.ToString();
+            this.messagePanel.Enabled = false;
+            showButton(false);
+            pictureBox.Reset();
+            pictureBox.TimerStart();
+        }
+
 
         private void getNoOfRobotAvailable()
         {
@@ -68,11 +91,9 @@ namespace DSED_01_App
             labelLoss.Text = myGame.Lose.ToString();
             getNoOfRobotAvailable();
 
-            showButton(false);
-
-            pictureBox.Text = this.myGame.CurrentBoxID.ToString();
-            pictureBox.Reset();
-            pictureBox.TimerStart();
+            //pictureBox.Text = this.myGame.CurrentBoxID.ToString();
+            //pictureBox.Reset();
+            //pictureBox.TimerStart();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -82,14 +103,16 @@ namespace DSED_01_App
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            if (myGame.isBomb())
+            this.pictureBox.BringImageToFront();
+            if (myGame.isMatch())
             {
+                pictureBox.Image = CommonControlClass.BombImage;
                 //MessageBox.Show("You have just detonated a bomb in the Box!!!\nYou Lose!!!\nPlease try again");
                 this.messagePanel.Text = "You have just detonated a bomb in the Box!!!\nYou Lose!!!\nPlease try again";
                 this.messagePanel.Enabled = true;
                 showButton(false);
                 myGame.YouLose();
-                return;
+                setCallBackToNewGame();
                 //pictureBox.Reset();
                 //myGame.NewGame();
                 //pictureBox1.Reset();
@@ -97,7 +120,8 @@ namespace DSED_01_App
             }
             else
             {
-                myGame.Next();
+                pictureBox.Image = CommonControlClass.getRandomImage(this.myGame.RandomImageNo);
+                myGame.CurrentBoxID++;
                 if (myGame.CurrentBoxID == myGame.NoOfBox)
                 {
                     //MessageBox.Show($"You have open all {myGame.NoOfBox - 1} box and found the bomb in the 6th box.\nWell Done.\nYou have won the game!!!");
@@ -105,37 +129,45 @@ namespace DSED_01_App
                     this.messagePanel.Enabled = true;
                     showButton(false);
                     myGame.YouWon();
-                    return;
+                    setCallBackToNewGame();
                     //pictureBox.Reset();
                     //myGame.NewGame();
 
                 }
                 else
                 {
-
+                    this.messagePanel.Text = "The box is safe!!!";
+                    this.messagePanel.Enabled = true;
+                    //this.pictureBox.BringImageToFront();
+                    setCallBackToMoveBox();
+                    refreshScreen();
                 }
             }
             //showButton(false);
-            refreshScreen();
+            
         }
 
         private void buttonRobotOpen_Click(object sender, EventArgs e)
         {
-            if (myGame.isBomb())
+
+            this.pictureBox.BringImageToFront();
+            if (myGame.isMatch())
             {
+                pictureBox.Image = CommonControlClass.BombImage;
                 //MessageBox.Show("You have used a robot to defuse a bomb.\nWell Done.\nYou have won the game!!!");
                 this.messagePanel.Text = "You have used a robot to defuse a bomb.\nWell Done.\nYou have won the game!!!";
                 this.messagePanel.Enabled = true;
                 //pictureBox.Reset();
                 showButton(false);
                 myGame.YouWon();
-                return;
+                setCallBackToNewGame();
                 //myGame.NewGame();
                 //
                 //pictureBox1.TimerStart();
             }
             else
             {
+                pictureBox.Image = CommonControlClass.getRandomImage(this.myGame.RandomImageNo);
                 myGame.RobotCount--;
                 if (myGame.RobotCount == 0)
                 {
@@ -145,14 +177,22 @@ namespace DSED_01_App
                     //pictureBox.Reset();
                     showButton(false);
                     myGame.YouLose();
-                    return;
+                    setCallBackToNewGame();
                     //myGame.NewGame();
                     //pictureBox1.Reset();
                     //pictureBox1.TimerStart();
                 }
+                else
+                {
+                    this.messagePanel.Text = "The box is safe!!!";
+                    this.messagePanel.Enabled = true;
+                    //this.pictureBox.BringImageToFront();
+                    setCallBackToMoveBox();
+                    refreshScreen();
+                }
             }
             //showButton(false);
-            refreshScreen();
+            
             //pictureBox.Reset();
             //pictureBox.TimerStart();
         }
