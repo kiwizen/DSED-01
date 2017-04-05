@@ -143,14 +143,14 @@ namespace DSED_01_App
             // 
             CommonControlClass.initialiseButtonControl(out this.buttonOpen, "You open\nthe box.", 550, 120, 200, 80);
             this.buttonOpen.Enabled = false;
-            //this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
+            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             this.Controls.Add(this.buttonOpen);
             // 
             // buttonRobot
             // 
             CommonControlClass.initialiseButtonControl(out this.buttonRobotOpen, "Use Robot Arm\nto open the box.", 550, 220, 200, 100);
             this.buttonRobotOpen.Enabled = false;
-            //this.buttonRobotOpen.Click += new System.EventHandler(this.buttonRobotOpen_Click);
+            this.buttonRobotOpen.Click += new System.EventHandler(this.buttonRobotOpen_Click);
             this.Controls.Add(this.buttonRobotOpen);
             // 
             // buttonExit
@@ -164,6 +164,7 @@ namespace DSED_01_App
         {
             this.messagePanel = new MessagePanel();
             this.messagePanel.CallBackMethod += this.NewGame;
+            this.messagePanel.Visible = true;
             this.Controls.Add(this.messagePanel);
         }
 

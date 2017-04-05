@@ -33,6 +33,8 @@ namespace DSED_01_App
         private void NewGame()
         {
             myGame.NewGame();
+            refreshScreen();
+
             this.messagePanel.Enabled = false;
             this.pictureBox.TimerStart();
         }
@@ -67,6 +69,8 @@ namespace DSED_01_App
             getNoOfRobotAvailable();
 
             showButton(false);
+
+            pictureBox.Text = this.myGame.CurrentBoxID.ToString();
             pictureBox.Reset();
             pictureBox.TimerStart();
         }
@@ -82,8 +86,12 @@ namespace DSED_01_App
             {
                 //MessageBox.Show("You have just detonated a bomb in the Box!!!\nYou Lose!!!\nPlease try again");
                 this.messagePanel.Text = "You have just detonated a bomb in the Box!!!\nYou Lose!!!\nPlease try again";
+                this.messagePanel.Enabled = true;
+                showButton(false);
                 myGame.YouLose();
-                myGame.NewGame();
+                return;
+                //pictureBox.Reset();
+                //myGame.NewGame();
                 //pictureBox1.Reset();
                 //pictureBox1.TimerStart();
             }
@@ -94,8 +102,17 @@ namespace DSED_01_App
                 {
                     //MessageBox.Show($"You have open all {myGame.NoOfBox - 1} box and found the bomb in the 6th box.\nWell Done.\nYou have won the game!!!");
                     this.messagePanel.Text = $"You have open all {myGame.NoOfBox - 1} box and found the bomb in the 6th box.\nWell Done.\nYou have won the game!!!";
+                    this.messagePanel.Enabled = true;
+                    showButton(false);
                     myGame.YouWon();
-                    myGame.NewGame();
+                    return;
+                    //pictureBox.Reset();
+                    //myGame.NewGame();
+
+                }
+                else
+                {
+
                 }
             }
             //showButton(false);
@@ -108,9 +125,13 @@ namespace DSED_01_App
             {
                 //MessageBox.Show("You have used a robot to defuse a bomb.\nWell Done.\nYou have won the game!!!");
                 this.messagePanel.Text = "You have used a robot to defuse a bomb.\nWell Done.\nYou have won the game!!!";
+                this.messagePanel.Enabled = true;
+                //pictureBox.Reset();
+                showButton(false);
                 myGame.YouWon();
+                return;
                 //myGame.NewGame();
-                //pictureBox1.Reset();
+                //
                 //pictureBox1.TimerStart();
             }
             else
@@ -120,7 +141,11 @@ namespace DSED_01_App
                 {
                     //MessageBox.Show("Sorry You used up all the robot and still could not find the bomb.\nYou lose!!!\nPlease try again");
                     this.messagePanel.Text = "Sorry You used up all the robot and still could not find the bomb.\nYou lose!!!\nPlease try again";
+                    this.messagePanel.Enabled = true;
+                    //pictureBox.Reset();
+                    showButton(false);
                     myGame.YouLose();
+                    return;
                     //myGame.NewGame();
                     //pictureBox1.Reset();
                     //pictureBox1.TimerStart();
