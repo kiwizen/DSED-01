@@ -25,11 +25,6 @@ namespace DSED_01_App
             get => global::DSED_01_App.Properties.Resources.Story;
         }
 
-        public CommonControlClass()
-        {
-
-        }
-
         public static int getTabIndex() { return ++_index; }
 
         /// <summary>

@@ -119,6 +119,10 @@ namespace DSED_01_App
             CommonControlClass.initialiseLabelControl(out this.labelBombLocation, "", 100, 20, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
             CommonControlClass.initialiseLabelControl(out this.labelCurrentID, "", 100, 70, textalign: System.Drawing.ContentAlignment.MiddleCenter, FixBorder: true);
 
+            CommonControlClass.initialiseLabelControl(out this.labelNoOfRobot, "You have ? robots left.", 550, 340, 149, 83, font_size : 18F,  FixBorder: true);
+
+            this.labelNoOfRobot.Visible = false;
+
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -127,6 +131,7 @@ namespace DSED_01_App
             this.Controls.Add(this.labelLoss);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelNoOfRobot);
             this.Controls.Add(this.labelBombLocation);
             this.Controls.Add(this.labelCurrentID);
         }
