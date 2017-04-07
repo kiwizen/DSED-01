@@ -68,6 +68,16 @@ namespace DSED_01_App
                 label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
         }
 
+        /// <summary>
+        /// This method create a unified button control on the form.
+        /// </summary>
+        /// <param name="button"></param>
+        /// <param name="buttonText"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="font_size"></param>
         public static void initialiseButtonControl(
             out System.Windows.Forms.Button button,
             string buttonText, int x, int y, int width, int height,
@@ -82,10 +92,6 @@ namespace DSED_01_App
             button.UseVisualStyleBackColor = true;
             button.TabIndex = CommonControlClass.getTabIndex();
         }
-
-
-
-
 
     }
 }

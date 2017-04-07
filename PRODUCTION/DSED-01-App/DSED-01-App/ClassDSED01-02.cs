@@ -19,7 +19,6 @@ namespace DSED_01_App
         private System.ComponentModel.Container components;
 
         private System.Windows.Forms.PictureBox _picBox;
-        //private System.Windows.Forms.PictureBox _numberBox;
         private System.Windows.Forms.Label _number;
         private System.Windows.Forms.Timer timer;
 
@@ -34,23 +33,10 @@ namespace DSED_01_App
 
             InitializeNumBox();
 
-            //initializeTimerMoveBox();
         }
 
         private void InitializeNumBox()
         {
-            /*
-            _numberBox = new System.Windows.Forms.PictureBox();
-            _numberBox.Image = CommonControlClass.GetBoxImage();
-            _numberBox.Location = new System.Drawing.Point(50, 70);
-            _numberBox.Name = "PictureBoxWithTimer";
-            _numberBox.Size = new System.Drawing.Size(50, 50);
-            _numberBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            _numberBox.TabIndex = CommonControlClass.getTabIndex();
-            _numberBox.TabStop = false;
-            this.Controls.Add(_numberBox);
-            _numberBox.BringToFront();
-            */
             _number = new System.Windows.Forms.Label();
             _number.Font = new System.Drawing.Font("Papyrus", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             _number.Location = new System.Drawing.Point(60, 75);
@@ -89,27 +75,22 @@ namespace DSED_01_App
             this.Controls.Add(_picBox);
         }
 
-        public void TimerStart()
-        {
-            this.Visible = true;
-            timer.Start();
-        }
-
         internal void StartMoving()
         {
             this.BringNumberToFront();
-            this.Reset();
-            this.TimerStart();
+            ResetParameter();
+            timer.Start();
         }
 
-        public void TimerStop() { timer.Stop(); }
-
-        public void Reset()
+        private void ResetParameter()
         {
             _picBox.Image = CommonControlClass.BoxImage;
             this.Location = new System.Drawing.Point(initial_picBox_X, initial_picBox_Y);
-            _step = 0;
+            this._step = 0;
+            this.Visible = true;
         }
+
+        public void TimerStop() { timer.Stop(); }
 
         private void Tick(object sender, EventArgs e)
         {
@@ -118,7 +99,6 @@ namespace DSED_01_App
                 TimerStop();
                 if (this.CallBackMethod != null)
                 {
-                    //Reset();
                     this.CallBackMethod.Invoke();
                     return;
                 }

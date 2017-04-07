@@ -26,20 +26,16 @@ namespace DSED_01_App
                 0, 0, 325, 225, 11F,
                 System.Drawing.ContentAlignment.TopLeft, FixBorder: true);
 
-            _button = new System.Windows.Forms.Button();
             CommonControlClass.initialiseButtonControl(out this._button, "OK", 100, 228, 100, 55);
             _button.Click += new System.EventHandler(this.OK_Click);
 
 
             this.Location = new System.Drawing.Point(200, 95);
             this.Size = new System.Drawing.Size(325, 280);
-
             this.Controls.Add(this._label);
             this.Controls.Add(this._button);
 
         }
-
-        public new string Text { set { this._label.Text = value; } }
 
         private void OK_Click(object sender, EventArgs e)
         {
@@ -49,19 +45,20 @@ namespace DSED_01_App
 
         public void ShowMessage(string text)
         {
-            _label.Text = text;
-            _label.Font = new System.Drawing.Font("Papyrus", 14);
-            _label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            setMessage(text, 14, System.Drawing.ContentAlignment.MiddleCenter);
             this.Enabled = true;
         }
 
         public void ShowGameRule()
         {
-            _label.Text = CommonControlClass.TextFile;
-            _label.Font = new System.Drawing.Font("Papyrus", 11);
-            _label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            setMessage(CommonControlClass.TextFile, 11, System.Drawing.ContentAlignment.TopLeft);
+        }
 
-            this.Controls.Add(this._label);
+        private void setMessage(string text, int font_size, System.Drawing.ContentAlignment textalign)
+        {
+            _label.Text = text;
+            _label.Font = new System.Drawing.Font("Papyrus", font_size);
+            _label.TextAlign = textalign;
         }
     }
 }

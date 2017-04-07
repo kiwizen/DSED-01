@@ -16,7 +16,6 @@ namespace DSED_01_App
         /// </summary>
         private System.Windows.Forms.Label labelGameTitle;
 
-
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -60,8 +59,6 @@ namespace DSED_01_App
             //   also display the box number
             InitializePictureBoxTimer();
         }
-
-
         /// <summary>
         /// This method initializes the form
         /// </summary>
@@ -76,7 +73,6 @@ namespace DSED_01_App
             // Center the form on the screen                                                                  
             this.CenterToScreen();
         }
-
         /// <summary>
         /// This method intialize the label control that display the title of the game
         /// Display "Bomb in the Box" on a label control
@@ -175,6 +171,5 @@ namespace DSED_01_App
             this.pictureBox.Visible = false;
             this.Controls.Add(this.pictureBox);
         }
-
     }
 }

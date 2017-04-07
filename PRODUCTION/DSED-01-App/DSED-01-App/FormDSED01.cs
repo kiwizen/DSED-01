@@ -134,7 +134,6 @@ namespace DSED_01_App
             if (myGame.isMatch())
             {
                 pictureBox.Image = CommonControlClass.BombImage;
-
                 DisplayPanelMessage("You have just detonated a bomb in the Box!!!\nYou Lose!!!\nPlease try again");
                 myGame.YouLose();
             }
@@ -149,8 +148,6 @@ namespace DSED_01_App
                 }
                 else
                 {
-                    //this.messagePanel.Text = "The box is safe!!!";
-                    //this.messagePanel.Enabled = true;
                     messagePanel.ShowMessage("The box is safe!!!");
                     setCallMethodToMoveBox();
                 }
@@ -159,8 +156,6 @@ namespace DSED_01_App
 
         private void DisplayPanelMessage(string text)
         {
-            //this.messagePanel.Text = text;
-            //this.messagePanel.Enabled = true;
             messagePanel.ShowMessage(text);
             showButton = false;
             setCallMethodToNewGame();
@@ -173,7 +168,6 @@ namespace DSED_01_App
             if (myGame.isMatch())
             {
                 pictureBox.Image = CommonControlClass.BombImage;
-
                 DisplayPanelMessage("You have used a robot to defuse a bomb.\nWell Done.\nYou have won the game!!!");
                 myGame.YouWon();
             }
@@ -186,14 +180,10 @@ namespace DSED_01_App
                 {
                     DisplayPanelMessage("Sorry You used up all the robot and still could not find the bomb.\nYou lose!!!\nPlease try again");
                     myGame.YouLose();
-
                 }
                 else
                 {
-                    //this.messagePanel.Text = "The box is safe!!!";
-                    //this.messagePanel.Enabled = true;
                     messagePanel.ShowMessage("The box is safe!!!");
-
                     setCallMethodToMoveBox();
                 }
             }
