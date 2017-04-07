@@ -12,16 +12,27 @@ namespace DSED_01_App
 {
     public partial class FormDSED01 : Form
     {
-        // A User defined Class to store all dependent variable related to the Game Form
-        //private CommonControlClass _myCommonClass;
+        /// <summary>
+        /// User-defined Game Class. contain all information related to the game.
+        /// </summary>
         private BombInBoxGame myGame;
-
+        /// <summary>
+        /// property field that set the visiblity of a set of buttons on the screen.
+        /// </summary>
+        private bool showButton {
+            set
+            {
+                buttonOpen.Enabled = value;
+                buttonRobotOpen.Enabled = value;
+            }
+        }
+        /// <summary>
+        /// Constructor for the FormDSED01
+        /// </summary>
         public FormDSED01()
         {
             // Initialize a user defined class object
-            //_myCommonClass = new CommonControlClass();
             myGame = new BombInBoxGame();
-
 
             // Default method call to initialize component
             InitializeComponent();
@@ -29,73 +40,89 @@ namespace DSED_01_App
             // Initialize screen control object
             InitializeGameScreenLayout();
         }
-
+        /// <summary>
+        /// start a new game, reset box counter and update the game score on the screen.
+        /// </summary>
         private void NewGame()
         {
             myGame.NewGame();
-            refreshScreen();
+            messagePanel.ShowGameRule();
+            UpdateGameScoreToScreen();
             MoveBox();
-            setCallBackToMoveBox();
+            setCallMethodToMoveBox();
         }
 
-        private void setCallBackToNewGame()
+        /// <summary>
+        /// display the latest game score onto the screen.
+        /// </summary>
+        private void UpdateGameScoreToScreen()
         {
-            showButton(false);
-            this.messagePanel.CallBackMethod = null;
-            this.messagePanel.CallBackMethod += this.NewGame;
-        }
-
-        private void setCallBackToMoveBox()
-        {
-            showButton(false);
-            this.messagePanel.CallBackMethod = null;
-            this.messagePanel.CallBackMethod += this.MoveBox;
-        }
-        public void MoveBox()
-        {
-            this.pictureBox.BringNumberToFront();
-            pictureBox.Text = myGame.CurrentBoxID.ToString();
-            this.messagePanel.Enabled = false;
-            showButton(false);
-            pictureBox.Reset();
-            pictureBox.TimerStart();
-        }
-
-
-        private void getNoOfRobotAvailable()
-        {
-            labelNoOfRobot.Text = "You have " + this.myGame.RobotCount + " robot" +
-                                 (myGame.RobotCount < 2 ? " " : "s ") + "left.";
-        }
-
-        private void EnableButton()
-        {
-            showButton();
-            getNoOfRobotAvailable();
-            this.labelNoOfRobot.Visible = true;
-        }
-
-        public void showButton(bool flag = true)
-        {
-            buttonOpen.Enabled = flag;
-            buttonRobotOpen.Enabled = flag;
-        }
-
-        private void refreshScreen()
-        {
-            labelBombLocation.Text = myGame.SecretBoxID.ToString();
-            labelCurrentID.Text = myGame.CurrentBoxID.ToString();
-
+            /*
+             * refresh the screen control object with 
+             *    the updated game score from the game class
+             */
             labelGame.Text = myGame.TotalGamePlayed.ToString();
             labelWin.Text = myGame.Win.ToString();
             labelLoss.Text = myGame.Lose.ToString();
-            getNoOfRobotAvailable();
-
-            //pictureBox.Text = this.myGame.CurrentBoxID.ToString();
-            //pictureBox.Reset();
-            //pictureBox.TimerStart();
+            labelNoOfRobot.Text = "You have " + myGame.RobotCount + " robot"
+                                  + (myGame.RobotCount < 2 ? " " : "s ") + "left.";
+            /*
+             * The following control object will only be visible on the screen 
+             *     when the user selected DEBUG mode.
+             */
+            labelBombLocation.Text = myGame.SecretBoxID.ToString();
+            labelCurrentID.Text = myGame.CurrentBoxID.ToString();
         }
+        /// <summary>
+        /// to be call by mean of delegation in MessagePanel class.
+        /// start a new game once the user press the OK button on the MessagePanel object.
+        /// </summary>
+        private void setCallMethodToNewGame()
+        {
+            showButton=false;
+            messagePanel.CallBackMethod = null;
+            messagePanel.CallBackMethod = NewGame;
+            //
+        }
+        /// <summary>
+        /// to be call by mean of delegation in MessagePanel class.
+        /// start the PictureBoxWithTimer object moving to the middle of the screen
+        ///   once the user press the OK button on the Message Panel object 
+        /// </summary>
+        private void setCallMethodToMoveBox()
+        {
+            showButton=false;
+            messagePanel.CallBackMethod = MoveBox;
+        }
+        /// <summary>
+        /// initiate the timer control in the PictureBoxWithTimer class
+        ///    which move the PictureBoxWithTimer object to the middle of the screen.
+        /// </summary>
+        public void MoveBox()
+        {
+            messagePanel.Enabled = false;
+            showButton = false;
 
+            pictureBox.Text = myGame.CurrentBoxID.ToString();
+            pictureBox.StartMoving();
+        }
+        /// <summary>
+        /// to be call by mean of delegation in PictureBoxWithTimer class.
+        /// once the PictureBoxWithTimer object moved to the middle of the screen,
+        ///     enable a set of buttons on the screen.
+        /// </summary>
+        private void EnableButton()
+        {
+            showButton=true;
+            labelNoOfRobot.Text = "You have " + myGame.RobotCount + " robot"
+                                  + (myGame.RobotCount < 2 ? " " : "s ") + "left.";
+            this.labelNoOfRobot.Visible = true;
+        }
+        /// <summary>
+        /// close the game application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -107,16 +134,9 @@ namespace DSED_01_App
             if (myGame.isMatch())
             {
                 pictureBox.Image = CommonControlClass.BombImage;
-                //MessageBox.Show("You have just detonated a bomb in the Box!!!\nYou Lose!!!\nPlease try again");
-                this.messagePanel.Text = "You have just detonated a bomb in the Box!!!\nYou Lose!!!\nPlease try again";
-                this.messagePanel.Enabled = true;
-                showButton(false);
+
+                DisplayPanelMessage("You have just detonated a bomb in the Box!!!\nYou Lose!!!\nPlease try again");
                 myGame.YouLose();
-                setCallBackToNewGame();
-                //pictureBox.Reset();
-                //myGame.NewGame();
-                //pictureBox1.Reset();
-                //pictureBox1.TimerStart();
             }
             else
             {
@@ -124,27 +144,26 @@ namespace DSED_01_App
                 myGame.CurrentBoxID++;
                 if (myGame.CurrentBoxID == myGame.NoOfBox)
                 {
-                    //MessageBox.Show($"You have open all {myGame.NoOfBox - 1} box and found the bomb in the 6th box.\nWell Done.\nYou have won the game!!!");
-                    this.messagePanel.Text = $"You have open all {myGame.NoOfBox - 1} box and found the bomb in the 6th box.\nWell Done.\nYou have won the game!!!";
-                    this.messagePanel.Enabled = true;
-                    showButton(false);
+                    DisplayPanelMessage($"You have open all {myGame.NoOfBox - 1} box and found the bomb in the 6th box.\nWell Done.\nYou have won the game!!!");
                     myGame.YouWon();
-                    setCallBackToNewGame();
-                    //pictureBox.Reset();
-                    //myGame.NewGame();
-
                 }
                 else
                 {
-                    this.messagePanel.Text = "The box is safe!!!";
-                    this.messagePanel.Enabled = true;
-                    //this.pictureBox.BringImageToFront();
-                    setCallBackToMoveBox();
-                    refreshScreen();
+                    //this.messagePanel.Text = "The box is safe!!!";
+                    //this.messagePanel.Enabled = true;
+                    messagePanel.ShowMessage("The box is safe!!!");
+                    setCallMethodToMoveBox();
                 }
-            }
-            //showButton(false);
-            
+            }     
+        }
+
+        private void DisplayPanelMessage(string text)
+        {
+            //this.messagePanel.Text = text;
+            //this.messagePanel.Enabled = true;
+            messagePanel.ShowMessage(text);
+            showButton = false;
+            setCallMethodToNewGame();
         }
 
         private void buttonRobotOpen_Click(object sender, EventArgs e)
@@ -154,47 +173,30 @@ namespace DSED_01_App
             if (myGame.isMatch())
             {
                 pictureBox.Image = CommonControlClass.BombImage;
-                //MessageBox.Show("You have used a robot to defuse a bomb.\nWell Done.\nYou have won the game!!!");
-                this.messagePanel.Text = "You have used a robot to defuse a bomb.\nWell Done.\nYou have won the game!!!";
-                this.messagePanel.Enabled = true;
-                //pictureBox.Reset();
-                showButton(false);
+
+                DisplayPanelMessage("You have used a robot to defuse a bomb.\nWell Done.\nYou have won the game!!!");
                 myGame.YouWon();
-                setCallBackToNewGame();
-                //myGame.NewGame();
-                //
-                //pictureBox1.TimerStart();
             }
             else
             {
                 pictureBox.Image = CommonControlClass.getRandomImage(this.myGame.RandomImageNo);
                 myGame.RobotCount--;
+                UpdateGameScoreToScreen();
                 if (myGame.RobotCount == 0)
                 {
-                    //MessageBox.Show("Sorry You used up all the robot and still could not find the bomb.\nYou lose!!!\nPlease try again");
-                    this.messagePanel.Text = "Sorry You used up all the robot and still could not find the bomb.\nYou lose!!!\nPlease try again";
-                    this.messagePanel.Enabled = true;
-                    //pictureBox.Reset();
-                    showButton(false);
+                    DisplayPanelMessage("Sorry You used up all the robot and still could not find the bomb.\nYou lose!!!\nPlease try again");
                     myGame.YouLose();
-                    setCallBackToNewGame();
-                    //myGame.NewGame();
-                    //pictureBox1.Reset();
-                    //pictureBox1.TimerStart();
+
                 }
                 else
                 {
-                    this.messagePanel.Text = "The box is safe!!!";
-                    this.messagePanel.Enabled = true;
-                    //this.pictureBox.BringImageToFront();
-                    setCallBackToMoveBox();
-                    refreshScreen();
+                    //this.messagePanel.Text = "The box is safe!!!";
+                    //this.messagePanel.Enabled = true;
+                    messagePanel.ShowMessage("The box is safe!!!");
+
+                    setCallMethodToMoveBox();
                 }
             }
-            //showButton(false);
-            
-            //pictureBox.Reset();
-            //pictureBox.TimerStart();
         }
     }
 }

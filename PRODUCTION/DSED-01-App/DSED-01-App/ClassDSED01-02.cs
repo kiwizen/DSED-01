@@ -94,6 +94,14 @@ namespace DSED_01_App
             this.Visible = true;
             timer.Start();
         }
+
+        internal void StartMoving()
+        {
+            this.BringNumberToFront();
+            this.Reset();
+            this.TimerStart();
+        }
+
         public void TimerStop() { timer.Stop(); }
 
         public void Reset()

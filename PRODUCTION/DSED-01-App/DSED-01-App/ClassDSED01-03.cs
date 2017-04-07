@@ -8,8 +8,8 @@ namespace DSED_01_App
 {
     /// <summary>
     /// This file contains a Custom Control Class.
-    /// This custom control display message realated to the game
-    ///    also contain button for user to press to continue.
+    /// This custom control class display message to the user
+    ///    and a OK button for user to click to continue.
     /// </summary>  
     public class MessagePanel : System.Windows.Forms.Panel
     {
@@ -22,12 +22,13 @@ namespace DSED_01_App
 
         public MessagePanel()
         {
-            CommonControlClass.initialiseLabelControl(out this._label, CommonControlClass.TextFile, 0, 0, 325, 225,11F,
-                System.Drawing.ContentAlignment.TopLeft, FixBorder : true);
+            CommonControlClass.initialiseLabelControl(out this._label, CommonControlClass.TextFile, 
+                0, 0, 325, 225, 11F,
+                System.Drawing.ContentAlignment.TopLeft, FixBorder: true);
 
             _button = new System.Windows.Forms.Button();
             CommonControlClass.initialiseButtonControl(out this._button, "OK", 100, 228, 100, 55);
-            this._button.Click += new System.EventHandler(this.OK_Click);
+            _button.Click += new System.EventHandler(this.OK_Click);
 
 
             this.Location = new System.Drawing.Point(200, 95);
@@ -42,8 +43,25 @@ namespace DSED_01_App
 
         private void OK_Click(object sender, EventArgs e)
         {
-            this._label.Text = CommonControlClass.TextFile;
+            ShowGameRule();
             if (CallBackMethod != null) CallBackMethod.Invoke();
+        }
+
+        public void ShowMessage(string text)
+        {
+            _label.Text = text;
+            _label.Font = new System.Drawing.Font("Papyrus", 14);
+            _label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Enabled = true;
+        }
+
+        public void ShowGameRule()
+        {
+            _label.Text = CommonControlClass.TextFile;
+            _label.Font = new System.Drawing.Font("Papyrus", 11);
+            _label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
+            this.Controls.Add(this._label);
         }
     }
 }
