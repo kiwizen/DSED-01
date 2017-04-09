@@ -23,7 +23,7 @@ namespace DSED_01_App
         public MessagePanel()
         {
             CommonControlClass.initialiseLabelControl(out this._label, CommonControlClass.TextFile, 
-                0, 0, 325, 225, 11F,
+                0, 0, 325, 225, 12F,
                 System.Drawing.ContentAlignment.TopLeft, FixBorder: true);
 
             CommonControlClass.initialiseButtonControl(out this._button, "OK", 100, 228, 100, 55);
@@ -51,7 +51,7 @@ namespace DSED_01_App
 
         public void ShowGameRule()
         {
-            setMessage(CommonControlClass.TextFile, 11, System.Drawing.ContentAlignment.TopLeft);
+            setMessage(CommonControlClass.TextFile, 12, System.Drawing.ContentAlignment.TopLeft);
         }
 
         private void setMessage(string text, int font_size, System.Drawing.ContentAlignment textalign)

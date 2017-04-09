@@ -93,5 +93,16 @@ namespace DSED_01_App
             button.TabIndex = CommonControlClass.getTabIndex();
         }
 
+        public static void intialiseComboBoxControl(out System.Windows.Forms.ComboBox combo,
+            int x, int y, int width = 150, int height = 30, System.Single font_size = 10F)
+        {
+            combo = new System.Windows.Forms.ComboBox();
+            combo.Location = new System.Drawing.Point(x, y);
+            combo = new System.Windows.Forms.ComboBox();
+            combo.Font = new System.Drawing.Font("Papyrus", font_size, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            combo.Location = new System.Drawing.Point(x, y);
+            combo.Size = new System.Drawing.Size(width, height);
+
+        }
     }
 }

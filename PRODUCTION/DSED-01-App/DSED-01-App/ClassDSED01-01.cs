@@ -11,6 +11,8 @@ namespace DSED_01_App
     /// </summary>
     partial class FormDSED01
     {
+        private static int DEBUG_MODE_ON = 1;
+        private static int DEBUG_MODE_OFF = 0;
         /// <summary>
         /// label control that store the title of the game
         /// </summary>
@@ -34,6 +36,7 @@ namespace DSED_01_App
         private System.Windows.Forms.Button buttonRobotOpen;
         private System.Windows.Forms.Button buttonExit;
 
+        private System.Windows.Forms.ComboBox comboDebug;
         // User-defined Custom Control Class
         private PictureBoxWithTimer pictureBox;
         private MessagePanel messagePanel;
@@ -69,7 +72,7 @@ namespace DSED_01_App
             // set to Borderless
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             // set the form size
-            this.Size = new System.Drawing.Size(800, 600);
+            this.Size = new System.Drawing.Size(800, 525);
             // Center the form on the screen                                                                  
             this.CenterToScreen();
         }
@@ -119,6 +122,14 @@ namespace DSED_01_App
 
             this.labelNoOfRobot.Visible = false;
 
+            // Combobox that toggle Debug information
+            CommonControlClass.intialiseComboBoxControl(out this.comboDebug, 25, 300);
+            this.comboDebug.Items.Add("Debug Mode: OFF");
+            this.comboDebug.Items.Add("Debug Mode:  ON");
+            this.comboDebug.SelectedIndex = FormDSED01.DEBUG_MODE_OFF;
+            this.comboDebug.SelectedIndexChanged += this.ComboDebug_SelctionChange;
+            DisplayDebugInformation(false);
+
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -130,6 +141,15 @@ namespace DSED_01_App
             this.Controls.Add(this.labelNoOfRobot);
             this.Controls.Add(this.labelBombLocation);
             this.Controls.Add(this.labelCurrentID);
+            this.Controls.Add(this.comboDebug);
+        }
+
+        private void DisplayDebugInformation(bool flag)
+        {
+            this.label4.Visible = flag;
+            this.label5.Visible = flag;
+            this.labelBombLocation.Visible = flag;
+            this.labelCurrentID.Visible = flag;
         }
 
         private void InitializeButton()

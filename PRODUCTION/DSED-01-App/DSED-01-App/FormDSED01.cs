@@ -188,6 +188,14 @@ namespace DSED_01_App
                 }
             }
         }
+
+        private void ComboDebug_SelctionChange(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ComboBox temp = sender as System.Windows.Forms.ComboBox;
+            //if( temp.SelectedIndex == )
+            DisplayDebugInformation(temp.SelectedIndex == FormDSED01.DEBUG_MODE_ON);
+        }
+
     }
 }
 
