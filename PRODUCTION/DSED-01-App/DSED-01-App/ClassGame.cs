@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSED_01_App
 {
-    class BombInBoxGame
+    public class BombInBoxGame
     {
         /// <summary>
         /// a Random number generator
