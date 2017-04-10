@@ -120,5 +120,23 @@
   <ItemGroup>
     <None Include="Resources\Story.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lets_play.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aah_aah.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\absolute_end.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cheering.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back_4_more_fun.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\all_system_go.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

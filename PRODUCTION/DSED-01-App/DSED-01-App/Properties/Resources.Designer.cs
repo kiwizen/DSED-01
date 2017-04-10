@@ -61,6 +61,42 @@ namespace DSED_01_App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream aah_aah {
+            get {
+                return ResourceManager.GetStream("aah_aah", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream absolute_end {
+            get {
+                return ResourceManager.GetStream("absolute_end", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream all_system_go {
+            get {
+                return ResourceManager.GetStream("all_system_go", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream back_4_more_fun {
+            get {
+                return ResourceManager.GetStream("back_4_more_fun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap bird {
@@ -97,6 +133,15 @@ namespace DSED_01_App.Properties {
             get {
                 object obj = ResourceManager.GetObject("cat", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Cheering {
+            get {
+                return ResourceManager.GetStream("Cheering", resourceCulture);
             }
         }
         
@@ -141,6 +186,15 @@ namespace DSED_01_App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream lets_play {
+            get {
+                return ResourceManager.GetStream("lets_play", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap seahorse {
@@ -151,7 +205,11 @@ namespace DSED_01_App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A nortorius person has placed a bomb in the one of the wooden boxes. There are 6 boxs left. Your task is to go through all the boxes and get the stuff out without opening the box containing the bomb. To win the game either 1) You open the first 5 boxes safely and the 6th box will contain the bomb. or 2) using the avaiable 2 robot arm to deactivate the bomb in the box. Good Luck !!!.
+        ///   Looks up a localized string similar to There are 6 boxes coming out sequentially. One of them contain a bomb.
+        ///To win the game, you can either 
+        ///1. open all 5 boxes that does not contain the bomb or 
+        ///2. use the 2 available rebot arms to disarm the bomb.
+        ///Good Luck !!!.
         /// </summary>
         internal static string Story {
             get {

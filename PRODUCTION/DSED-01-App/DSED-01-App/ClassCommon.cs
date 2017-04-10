@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,44 @@ namespace DSED_01_App
         {
             return global::DSED_01_App.Properties.Resources.ResourceManager.GetObject(ImageList[i])
                             as System.Drawing.Bitmap;
+        }
+
+        public static void LetPlaySound()
+        {
+            playSound(global::DSED_01_App.Properties.Resources.lets_play);
+        }
+
+        public static void PlayFindBombSound()
+        {         
+            playSound(global::DSED_01_App.Properties.Resources.absolute_end);
+        }
+
+        public static void playUsedAllRobotArmSound()
+        {
+            playSound(global::DSED_01_App.Properties.Resources.aah_aah);
+        }
+
+        public static void playWinningSound()
+        {
+            playSound(global::DSED_01_App.Properties.Resources.Cheering);
+        }
+
+        public static void playNextMoveSound()
+        {
+            playSound(global::DSED_01_App.Properties.Resources.back_4_more_fun);
+        }
+
+        public static void playSafeMoveSound()
+        {
+            playSound(global::DSED_01_App.Properties.Resources.all_system_go);
+        }
+        private static void playSound(UnmanagedMemoryStream wave)
+        {
+            System.Media.SoundPlayer player =
+                new System.Media.SoundPlayer();
+            player.Stream = wave;
+            player.LoadAsync();
+            player.Play();
         }
 
         /// <summary>
@@ -104,5 +143,16 @@ namespace DSED_01_App
             combo.Size = new System.Drawing.Size(width, height);
 
         }
+        /*
+        public static void playSound(string path)
+        {
+            System.Media.SoundPlayer player =
+                new System.Media.SoundPlayer();
+            //player.SoundLocation = path;
+            player.SoundLocation = path;
+            player.Load();
+            player.Play();
+        }
+        */
     }
 }

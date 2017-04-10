@@ -148,4 +148,22 @@
   <data name="Story" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Story.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="aah_aah" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aah_aah.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="absolute_end" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\absolute_end.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="all_system_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\all_system_go.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="back_4_more_fun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_4_more_fun.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Cheering" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cheering.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lets_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lets_play.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -1,5 +1,5 @@
-There are 6 boxes coming out sequentially.
-One of them contain a bomb.
-To win the game, you can either open all 5 boxes that does not contain bomb.
-or use the 2 available rebot arms to disarm the bomb.
+There are 6 boxes coming out sequentially. One of them contain a bomb.
+To win the game, you can either 
+1. open all 5 boxes that does not contain the bomb or 
+2. use the 2 available rebot arms to disarm the bomb.
 Good Luck !!!

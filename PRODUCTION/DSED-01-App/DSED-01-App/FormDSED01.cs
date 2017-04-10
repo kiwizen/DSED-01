@@ -48,6 +48,7 @@ namespace DSED_01_App
             myGame.NewGame();
             messagePanel.ShowGameRule();
             UpdateGameScoreToScreen();
+            //CommonControlClass.LetPlaySound();
             MoveBox();
             setCallMethodToMoveBox();
         }
@@ -64,8 +65,7 @@ namespace DSED_01_App
             labelGame.Text = myGame.TotalGamePlayed.ToString();
             labelWin.Text = myGame.Win.ToString();
             labelLoss.Text = myGame.Lose.ToString();
-            labelNoOfRobot.Text = "You have " + myGame.RobotCount + " robot"
-                                  + (myGame.RobotCount < 2 ? " " : "s ") + "left.";
+            ShowNoOfRobotArm();
             /*
              * The following control object will only be visible on the screen 
              *     when the user selected DEBUG mode.
@@ -103,7 +103,13 @@ namespace DSED_01_App
             messagePanel.Enabled = false;
             showButton = false;
 
-            pictureBox.Text = myGame.CurrentBoxID.ToString();
+            string currentID = myGame.CurrentBoxID.ToString();
+            pictureBox.Text = currentID;
+            labelCurrentID.Text = currentID;
+            if(myGame.CurrentBoxID == 1)
+                CommonControlClass.LetPlaySound();
+            else
+                CommonControlClass.playNextMoveSound();
             pictureBox.StartMoving();
         }
         /// <summary>
@@ -114,9 +120,14 @@ namespace DSED_01_App
         private void EnableButton()
         {
             showButton=true;
-            labelNoOfRobot.Text = "You have " + myGame.RobotCount + " robot"
-                                  + (myGame.RobotCount < 2 ? " " : "s ") + "left.";
+            ShowNoOfRobotArm();
             this.labelNoOfRobot.Visible = true;
+        }
+
+        private void ShowNoOfRobotArm()
+        {
+            labelNoOfRobot.Text = "You have " + myGame.RobotCount + " robot arm"
+                                  + (myGame.RobotCount < 2 ? " " : "s ") + "left.";
         }
         /// <summary>
         /// close the game application.
@@ -128,13 +139,22 @@ namespace DSED_01_App
             this.Close();
         }
 
+        private void DisplayPanelMessage(string text)
+        {
+            messagePanel.ShowMessage(text);
+            showButton = false;
+            setCallMethodToNewGame();
+        }
+
+
         private void buttonOpen_Click(object sender, EventArgs e)
         {
             this.pictureBox.BringImageToFront();
             if (myGame.isMatch())
             {
                 pictureBox.Image = CommonControlClass.BombImage;
-                DisplayPanelMessage("You have just detonated a bomb in the Box!!!\nYou Lose!!!\nPlease try again");
+                DisplayPanelMessage("You have just detonated a bomb in the Box!!!\n\nYou Lose!!!\n\nPlease try again");
+                CommonControlClass.PlayFindBombSound();
                 myGame.YouLose();
             }
             else
@@ -143,56 +163,61 @@ namespace DSED_01_App
                 myGame.CurrentBoxID++;
                 if (myGame.CurrentBoxID == myGame.NoOfBox)
                 {
-                    DisplayPanelMessage($"You have open all {myGame.NoOfBox - 1} box and found the bomb in the 6th box.\nWell Done.\nYou have won the game!!!");
-                    myGame.YouWon();
+                    DisplayPanelMessage($"You have open all {myGame.NoOfBox - 1} box and found the bomb in the 6th box.\n\nYou have won the game!!!\n\nLet's have another game.");
+                    DisplayWinningMessage();
                 }
                 else
                 {
-                    messagePanel.ShowMessage("The box is safe!!!");
-                    setCallMethodToMoveBox();
+                    ShowBoxIsSafeMessage();
                 }
             }     
         }
 
-        private void DisplayPanelMessage(string text)
+        private void ShowBoxIsSafeMessage()
         {
-            messagePanel.ShowMessage(text);
-            showButton = false;
-            setCallMethodToNewGame();
+            messagePanel.ShowMessage("This box is safe!!\n\nLet's move on the next box.");
+            CommonControlClass.playSafeMoveSound();
+            setCallMethodToMoveBox();
         }
 
         private void buttonRobotOpen_Click(object sender, EventArgs e)
         {
-
             this.pictureBox.BringImageToFront();
+            myGame.RobotCount--;
             if (myGame.isMatch())
             {
+                ShowNoOfRobotArm();
                 pictureBox.Image = CommonControlClass.BombImage;
-                DisplayPanelMessage("You have used a robot to defuse a bomb.\nWell Done.\nYou have won the game!!!");
-                myGame.YouWon();
+                DisplayPanelMessage("You have used a robot to defuse a bomb.\n\nYou have won the game!!!\n\nLet's have another game.");
+                DisplayWinningMessage();
             }
             else
             {
                 pictureBox.Image = CommonControlClass.getRandomImage(this.myGame.RandomImageNo);
-                myGame.RobotCount--;
+                myGame.CurrentBoxID++;
                 UpdateGameScoreToScreen();
                 if (myGame.RobotCount == 0)
                 {
-                    DisplayPanelMessage("Sorry You used up all the robot and still could not find the bomb.\nYou lose!!!\nPlease try again");
+                    DisplayPanelMessage("Sorry You used up all the robot arms and still could not find the bomb.\n\nYou lose!!!\n\nPlease try again.");
+                    CommonControlClass.playUsedAllRobotArmSound();
                     myGame.YouLose();
                 }
                 else
                 {
-                    messagePanel.ShowMessage("The box is safe!!!");
-                    setCallMethodToMoveBox();
+                    ShowBoxIsSafeMessage();
                 }
             }
+        }
+
+        private void DisplayWinningMessage()
+        {
+            CommonControlClass.playWinningSound();
+            myGame.YouWon();
         }
 
         private void ComboDebug_SelctionChange(object sender, EventArgs e)
         {
             System.Windows.Forms.ComboBox temp = sender as System.Windows.Forms.ComboBox;
-            //if( temp.SelectedIndex == )
             DisplayDebugInformation(temp.SelectedIndex == FormDSED01.DEBUG_MODE_ON);
         }
 
